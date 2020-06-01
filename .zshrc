@@ -12,6 +12,11 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+# Edit the command in editor
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+
 # Prompt
 if [[ -n $SSH_CONNECTION ]]; then
     HOST_LBL="%F{green}[%m]%f"
