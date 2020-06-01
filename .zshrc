@@ -19,7 +19,7 @@ bindkey "^X^E" edit-command-line
 
 # Prompt
 if [[ -n $SSH_CONNECTION ]]; then
-    HOST_LBL="%F{green}[%m]%f"
+    HOST_LBL="%F{red}[%m]%f"
 fi
 
 PROMPT="%B%(?..%F{red}[%?]%f)$HOST_LBL%(!.%F{red}[%n]%f.)%F{cyan}%~%(!.%F{red}.%F{green})%# %f%b"
