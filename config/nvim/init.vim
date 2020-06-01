@@ -29,7 +29,6 @@ Plug 'kien/ctrlp.vim'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'tpope/vim-vinegar'
-Plug 'vim-airline/vim-airline'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -73,17 +72,9 @@ let g:gruvbox_italic='1' "has to be before the colorscheme
 let g:gruvbox_contrast_dark ='hard'
 set background=dark
 colorscheme gruvbox
-let g:airline_theme="gruvbox"
-
-" airline
-set noshowmode
-let g:airline#extensions#tabline#enabled = 1
 
 " set line numbering
 set number
-
-" hidden is cool
-set hidden
 
 " add 80th column hightlight
 set colorcolumn=80
