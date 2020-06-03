@@ -164,7 +164,7 @@ nnoremap <Leader>u :UndotreeToggle<cr>
 nnoremap U :echo "NOPE!"<CR>
 
 " vimwiki
-let g:vimwiki_list = [{'path': '~/nextcloud/vimwiki', 'syntax': 'markdown', 'ext': '.vwmd'}]
+let g:vimwiki_list = [{'path': '~/nextcloud/vimwiki', 'ext': '.vimwiki'}]
 
 " Statusline
 function! s:statusline_builder()
