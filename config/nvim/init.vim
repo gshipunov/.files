@@ -68,7 +68,9 @@ endif
 " all my terminals can handle italic
 set t_ZH=[3m
 set t_ZR=[23m
-let g:gruvbox_italic='1' "has to be before the colorscheme
+
+" colorscheme
+let g:gruvbox_italic='1'
 let g:gruvbox_contrast_dark ='hard'
 set background=dark
 colorscheme gruvbox
@@ -163,3 +165,19 @@ nnoremap U :echo "NOPE!"<CR>
 
 " vimwiki
 let g:vimwiki_list = [{'path': '~/nextcloud/vimwiki', 'syntax': 'markdown', 'ext': '.vwmd'}]
+
+" Statusline
+function! s:statusline_builder()
+    let l:buffer     = "[%n]%<%f%m%r "
+    let l:filetype   = "%{len(&filetype) ? '['.&filetype.'] ' : ' '}"
+    let l:git        = "%{exists('g:loaded_fugitive') ? fugitive#statusline() : ''}"
+    let l:coordinate = ' %-12(%l:%c%V%)'
+    let l:position   = ' %P'
+    let l:sep        = '%='
+    let l:fileenc    = "%{strlen(&fenc) ? &fenc : 'none'}"
+    let l:filefmt    = "%{&ff}"
+
+    return l:buffer.l:filetype.l:git.l:sep.l:coordinate.'['.l:fileenc.':'.l:filefmt.']'.l:position
+endfunction
+" set statusline
+let &statusline = s:statusline_builder()
