@@ -49,8 +49,6 @@ Plug 'tpope/vim-markdown', {'for': 'markdown'}
 Plug 'LnL7/vim-nix', {'for': 'nix'}
 Plug 'chikamichi/mediawiki.vim'
 
-Plug 'vimwiki/vimwiki'
-
 call plug#end()
 
 "" TeX and co stuff
@@ -162,9 +160,6 @@ inoremap <F9> <C-o>:set spell!<CR>
 nnoremap <Leader>u :UndotreeToggle<cr>
 " U is quite useless
 nnoremap U :echo "NOPE!"<CR>
-
-" vimwiki
-let g:vimwiki_list = [{'path': '~/nextcloud/vimwiki', 'ext': '.vimwiki'}]
 
 " Statusline
 function! s:statusline_builder()
