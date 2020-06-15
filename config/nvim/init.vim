@@ -45,7 +45,6 @@ Plug 'NLKNguyen/c-syntax.vim'
 Plug 'hdima/python-syntax'
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'dag/vim-fish', {'for': 'fish'}
-Plug 'tpope/vim-markdown', {'for': 'markdown'}
 Plug 'LnL7/vim-nix', {'for': 'nix'}
 Plug 'chikamichi/mediawiki.vim'
 
@@ -135,8 +134,9 @@ set updatetime=107
 let g:linuxsty_patterns = ["/usr/src", "/linux", "~/git/linux", "~/devel/linux"]
 
 " markdown
+let g:markdown_folding = 1
 let g:markdown_syntax_conceal = 0
-let g:markdown_fenced_languages = ['html', 'python']
+let g:markdown_fenced_languages = ['html', 'python', 'scheme']
 
 " disable modelines
 set nomodeline
