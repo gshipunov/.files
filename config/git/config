@@ -13,3 +13,4 @@
 [alias]
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   diffw = diff --word-diff=color
+  diffstat = diff --stat
