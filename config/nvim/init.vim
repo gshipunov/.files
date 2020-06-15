@@ -153,6 +153,7 @@ set wildmode=longest:full,list:full
 set spelllang=en,ru,de
 nnoremap <F9> :set spell!<CR>
 inoremap <F9> <C-o>:set spell!<CR>
+set spellsuggest+=10
 
 " Toggle UndoTree
 nnoremap <Leader>u :UndotreeToggle<cr>
