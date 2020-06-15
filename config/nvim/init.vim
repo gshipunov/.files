@@ -45,9 +45,11 @@ Plug 'NLKNguyen/c-syntax.vim'
 Plug 'hdima/python-syntax'
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'dag/vim-fish', {'for': 'fish'}
-Plug 'tpope/vim-markdown', {'for': 'markdown'}
 Plug 'LnL7/vim-nix', {'for': 'nix'}
 Plug 'chikamichi/mediawiki.vim'
+Plug 'godlygeek/tabular' " for vim-markdown
+Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+
 
 call plug#end()
 
@@ -134,10 +136,6 @@ set updatetime=107
 " Activate linux coding style helper only in certain dirs
 let g:linuxsty_patterns = ["/usr/src", "/linux", "~/git/linux", "~/devel/linux"]
 
-" markdown
-let g:markdown_syntax_conceal = 0
-let g:markdown_fenced_languages = ['html', 'python']
-
 " disable modelines
 set nomodeline
 
@@ -160,6 +158,11 @@ inoremap <F9> <C-o>:set spell!<CR>
 nnoremap <Leader>u :UndotreeToggle<cr>
 " U is quite useless
 nnoremap U :echo "NOPE!"<CR>
+
+" markdown
+let g:vim_markdown_folding_disabled = 1 " FIXME: the folds flicker open and
+                                        " closed for some reason
+let g:vim_markdown_conceal = 0 " do not conseal markup
 
 " Statusline
 function! s:statusline_builder()
