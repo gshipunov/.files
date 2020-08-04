@@ -36,7 +36,7 @@ Plug 'airblade/vim-gitgutter'
 
 " Checking, linting, building etc.
 Plug 'neomake/neomake'
-Plug 'ycm-core/YouCompleteMe', {'for': ['python', 'c', 'cpp']}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 "Better syntax
 Plug 'lervag/vimtex', {'for': 'tex'}
@@ -147,6 +147,9 @@ call neomake#configure#automake('rw')
 " easy align
 nmap <leader>a <Plug>(EasyAlign)
 xmap <leader>a <Plug>(EasyAlign)
+
+" dark-magic completion
+let g:deoplete#enable_at_startup = 1
 
 " change tab completion to more bash-like
 set wildmode=longest:full,list:full
