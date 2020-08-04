@@ -1,16 +1,18 @@
 [user]
-  name = Grigory Shipunov
-  email = blame@oxapentane.com
-  signingkey = 4C3CD96ED78251532AB5500AC688AC5B60F7A3A5
+	name = Grigory Shipunov
+	email = blame@oxapentane.com
+	signingkey = 4C3CD96ED78251532AB5500AC688AC5B60F7A3A5
 [color]
-  ui = auto
+	ui = auto
 [merege]
-  conflictstyle = diff3
+	conflictstyle = diff3
 [commit]
-  gpgsign = true
+	gpgsign = true
 [credential]
-  helper = cache --timeout 28800
+	helper = cache --timeout 28800
 [alias]
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  diffw = diff --word-diff=color
-  diffstat = diff --stat
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	diffw = diff --word-diff=color
+	diffstat = diff --stat
+[pull]
+	ff = only
