@@ -18,7 +18,6 @@ Plug 'lambdalisue/suda.vim'
 Plug 'junegunn/vim-easy-align'
 
 " Some config/whitespace automation
-Plug 'dpc/vim-smarttabs'
 Plug 'tpope/vim-sleuth'
 
 " Interface
