@@ -34,10 +34,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-" Checking, linting, building etc.
-Plug 'neomake/neomake'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
 "Better syntax
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'vivien/vim-linux-coding-style'
@@ -141,15 +137,9 @@ let g:markdown_fenced_languages = ['html', 'python', 'scheme']
 " disable modelines
 set nomodeline
 
-" neomake on read and write
-call neomake#configure#automake('rw')
-
 " easy align
 nmap <leader>a <Plug>(EasyAlign)
 xmap <leader>a <Plug>(EasyAlign)
-
-" dark-magic completion
-let g:deoplete#enable_at_startup = 1
 
 " change tab completion to more bash-like
 set wildmode=longest:full,list:full
