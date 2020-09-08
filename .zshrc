@@ -36,7 +36,8 @@ alias l="ls -h -l -A"
 alias l.="ls -d .*"
 
 # easy edit
-alias e=$VISUAL
+alias e=$EDITOR
+alias v=$VISUAL
 
 # platform-specific config
 unamestr=$(uname 2> /dev/null)

@@ -7,15 +7,8 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Colorschemes
-Plug 'morhetz/gruvbox'
-
 " Nifty stuff
-Plug 'scrooloose/nerdcommenter'
-Plug 'tpope/vim-surround'
 Plug 'jamessan/vim-gnupg'
-Plug 'lambdalisue/suda.vim'
-Plug 'junegunn/vim-easy-align'
 
 " Some config/whitespace automation
 Plug 'dpc/vim-smarttabs'
@@ -23,7 +16,6 @@ Plug 'tpope/vim-sleuth'
 
 " Interface
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/indentLine'
 Plug 'kien/ctrlp.vim'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
@@ -31,7 +23,6 @@ Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'tpope/vim-vinegar'
 
 " Git
-Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 "Better syntax
@@ -54,25 +45,8 @@ let g:tex_conceal = ''
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
-" theme
-if $COLORTERM == 'truecolor' || $COLORTERM == '24bit'
-    set termguicolors
-endif
-" all my terminals can handle italic
-set t_ZH=[3m
-set t_ZR=[23m
-
-" colorscheme
-let g:gruvbox_italic='1'
-let g:gruvbox_contrast_dark ='hard'
-set background=dark
-colorscheme gruvbox
-
 " set line numbering
 set number
-
-" add 80th column hightlight
-set colorcolumn=80
 
 " use arrows for visual line navigation
 imap <up> <C-O>gk
@@ -132,14 +106,10 @@ let g:linuxsty_patterns = ["/usr/src", "/linux", "~/git/linux", "~/devel/linux"]
 " markdown
 let g:markdown_folding = 1
 let g:markdown_syntax_conceal = 0
-let g:markdown_fenced_languages = ['html', 'python', 'scheme']
+let g:markdown_fenced_languages = ['C', 'html', 'python', 'scheme']
 
 " disable modelines
 set nomodeline
-
-" easy align
-nmap <leader>a <Plug>(EasyAlign)
-xmap <leader>a <Plug>(EasyAlign)
 
 " change tab completion to more bash-like
 set wildmode=longest:full,list:full
