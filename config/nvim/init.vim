@@ -11,7 +11,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'jamessan/vim-gnupg'
 
 " Some config/whitespace automation
-Plug 'dpc/vim-smarttabs'
 Plug 'tpope/vim-sleuth'
 
 " Interface
