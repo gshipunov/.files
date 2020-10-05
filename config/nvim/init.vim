@@ -134,19 +134,3 @@ set spellsuggest+=10
 nnoremap <Leader>u :UndotreeToggle<cr>
 " U is quite useless
 nnoremap U :echo "NOPE!"<CR>
-
-" Statusline
-function! s:statusline_builder()
-    let l:buffer     = "[%n]%<%f%m%r "
-    let l:filetype   = "%{len(&filetype) ? '['.&filetype.'] ' : ' '}"
-    let l:git        = "%{exists('g:loaded_fugitive') ? fugitive#statusline() : ''}"
-    let l:coordinate = ' %-12(%l:%c%V%)'
-    let l:position   = ' %P'
-    let l:sep        = '%='
-    let l:fileenc    = "%{strlen(&fenc) ? &fenc : 'none'}"
-    let l:filefmt    = "%{&ff}"
-
-    return l:buffer.l:filetype.l:git.l:sep.l:coordinate.'['.l:fileenc.':'.l:filefmt.']'.l:position
-endfunction
-" set statusline
-let &statusline = s:statusline_builder()
