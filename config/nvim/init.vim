@@ -103,9 +103,8 @@ set updatetime=107
 let g:linuxsty_patterns = ["/usr/src", "/linux", "~/git/linux", "~/devel/linux"]
 
 " markdown
-let g:markdown_folding = 1
 let g:markdown_syntax_conceal = 0
-let g:markdown_fenced_languages = ['C', 'html', 'python', 'scheme']
+let g:markdown_fenced_languages = ['c', 'html', 'python', 'scheme']
 
 " disable modelines
 set nomodeline
