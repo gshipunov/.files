@@ -7,6 +7,9 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+" colors
+Plug 'morhetz/gruvbox'
+
 " Nifty stuff
 Plug 'jamessan/vim-gnupg'
 
@@ -33,8 +36,17 @@ Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'dag/vim-fish', {'for': 'fish'}
 Plug 'LnL7/vim-nix', {'for': 'nix'}
 Plug 'chikamichi/mediawiki.vim'
+Plug 'cespare/vim-toml'
 
 call plug#end()
+
+" set colors
+if $COLORTERM == 'truecolor' || $COLORTERM == '24bit'
+    set termguicolors
+endif
+
+let g:gruvbox_contrast_dark = "hard"
+colorscheme gruvbox
 
 "" TeX and co stuff
 " disable TeX commands concealing
