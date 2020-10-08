@@ -40,14 +40,6 @@ Plug 'cespare/vim-toml'
 
 call plug#end()
 
-" set colors
-if $COLORTERM == 'truecolor' || $COLORTERM == '24bit'
-    set termguicolors
-endif
-
-let g:gruvbox_contrast_dark = "hard"
-colorscheme gruvbox
-
 "" TeX and co stuff
 " disable TeX commands concealing
 let g:tex_conceal = ''
@@ -134,3 +126,5 @@ set spellsuggest+=10
 nnoremap <Leader>u :UndotreeToggle<cr>
 " U is quite useless
 nnoremap U :echo "NOPE!"<CR>
+
+set laststatus=1
