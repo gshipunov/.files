@@ -7,9 +7,6 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-" colors
-Plug 'morhetz/gruvbox'
-
 " Nifty stuff
 Plug 'jamessan/vim-gnupg'
 
@@ -23,6 +20,8 @@ Plug 'kien/ctrlp.vim'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " Git
 Plug 'airblade/vim-gitgutter'
@@ -127,4 +126,3 @@ nnoremap <Leader>u :UndotreeToggle<cr>
 " U is quite useless
 nnoremap U :echo "NOPE!"<CR>
 
-set laststatus=1
