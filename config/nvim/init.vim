@@ -126,3 +126,5 @@ nnoremap <Leader>u :UndotreeToggle<cr>
 " U is quite useless
 nnoremap U :echo "NOPE!"<CR>
 
+" do not conceal stuff
+set conceallevel=0
