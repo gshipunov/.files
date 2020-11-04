@@ -16,15 +16,22 @@ Plug 'tpope/vim-sleuth'
 " Interface
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'Yggdroot/indentLine'
-Plug 'kien/ctrlp.vim'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
+Plug 'vim-airline/vim-airline'
+
+" Navigation
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
 
 " Git
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+" linting/formatting/completion
+Plug 'neomake/neomake'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 "Better syntax
 Plug 'lervag/vimtex', {'for': 'tex'}
@@ -96,8 +103,9 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-" Easier buffer switching
-nnoremap <leader>b :CtrlPBuffer<CR>
+" fzf.vim
+nnoremap <C-P> :Files<CR>
+nnoremap <leader>b :Buffers<CR>
 
 " Update more often
 set updatetime=107
@@ -129,18 +137,8 @@ nnoremap U :echo "NOPE!"<CR>
 " do not conceal stuff
 set conceallevel=0
 
-" Statusline
-function! s:statusline_builder()
-    let l:buffer     = "[%n]%<%f%m%r "
-    let l:filetype   = "%{len(&filetype) ? '['.&filetype.'] ' : ' '}"
-    let l:git        = "%{exists('g:loaded_fugitive') ? fugitive#statusline() : ''}"
-    let l:coordinate = ' %-12(%l:%c%V%)'
-    let l:position   = ' %P'
-    let l:sep        = '%='
-    let l:fileenc    = "%{strlen(&fenc) ? &fenc : 'none'}"
-    let l:filefmt    = "%{&ff}"
+" deoplete
+let g:deoplete#enable_at_startup = 1
 
-    return l:buffer.l:filetype.l:git.l:sep.l:coordinate.'['.l:fileenc.':'.l:filefmt.']'.l:position
-endfunction
-" set statusline
-let &statusline = s:statusline_builder()
+" neomake
+call neomake#configure#automake('rw', 1000)
