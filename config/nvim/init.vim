@@ -19,6 +19,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Navigation
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -142,3 +143,7 @@ let g:deoplete#enable_at_startup = 1
 
 " neomake
 call neomake#configure#automake('rw', 1000)
+
+" airline
+set noshowmode
+let g:airline_theme='monochrome'
