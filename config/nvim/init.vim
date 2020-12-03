@@ -12,19 +12,7 @@ Plug 'jamessan/vim-gnupg'
 
 " Some config/whitespace automation
 Plug 'tpope/vim-sleuth'
-
-" Interface
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'Yggdroot/indentLine'
-Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
-Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" Navigation
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-vinegar'
 
 " Git
 Plug 'airblade/vim-gitgutter'
@@ -47,6 +35,8 @@ Plug 'cespare/vim-toml'
 
 call plug#end()
 
+set laststatus=1
+
 "" TeX and co stuff
 " disable TeX commands concealing
 let g:tex_conceal = ''
@@ -58,22 +48,11 @@ let maplocalleader = "\\"
 " set line numbering
 set number
 
-" use arrows for visual line navigation
-imap <up> <C-O>gk
-imap <down> <C-O>gj
-nmap <up> gk
-nmap <down> gj
-vmap <up> gk
-vmap <down> gj
-
 " Set place for backups
 set nobackup
 
 " Swap for slacks
 set noswapfile
-
-" Tagbar
-nmap <F8> :TagbarToggle<CR>
 
 " autosmartident
 set ai
@@ -104,10 +83,6 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-" fzf.vim
-nnoremap <C-P> :Files<CR>
-nnoremap <leader>b :Buffers<CR>
-
 " Update more often
 set updatetime=107
 
@@ -130,8 +105,6 @@ nnoremap <F9> :set spell!<CR>
 inoremap <F9> <C-o>:set spell!<CR>
 set spellsuggest+=10
 
-" Toggle UndoTree
-nnoremap <Leader>u :UndotreeToggle<cr>
 " U is quite useless
 nnoremap U :echo "NOPE!"<CR>
 
@@ -143,7 +116,3 @@ let g:deoplete#enable_at_startup = 1
 
 " neomake
 call neomake#configure#automake('rw', 1000)
-
-" airline
-set noshowmode
-let g:airline_theme='monochrome'
