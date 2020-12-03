@@ -1,3 +1,8 @@
+# PATH manipulation
+## for pipx
+export PATH=$HOME/.local/bin:$PATH
+
+# QoL aliases
 export EDITOR="vi"
 export VISUAL="nvim"
 

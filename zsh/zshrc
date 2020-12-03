@@ -1,0 +1,22 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt appendhistory
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/gshipunov/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+# Prompt
+if [[ -n $SSH_CONNECTION ]]; then
+    HOST_LBL="%F{red}[%m]%f"
+fi
+
+PROMPT="%B%(?..%F{red}[%?]%f)$HOST_LBL%(!.%F{red}[%n]%f.)%F{cyan}%~%(!.%F{red}.%F{green})%# %f%b"
+
+source ./common
