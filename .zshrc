@@ -47,7 +47,7 @@ case "$unamestr" in
     alias o="open"
     alias cpy="pbcopy"
     alias pst="pbpaste"
-    # highlight syntax in zsh
+    export HOMEBREW_NO_AUTO_UPDATE=1
     ;;
     "Linux")
     alias o="xdg-open"
