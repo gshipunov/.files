@@ -54,8 +54,10 @@ case "$unamestr" in
     ;;
     "Linux")
     alias o="xdg-open"
-    alias cpy="xclip -selection clipboard"
-    alias pst="xclip -selection clipboard -o"
+    alias cpy="wl-copy"
+    alias pst="wl-paste"
+    alias xcpy="xclip -selection clipboard"
+    alias xpst="xclip -selection clipboard -o"
 
     # use dircolors, if we have them
     if [[ -f $HOME/.dir_colors ]]; then
