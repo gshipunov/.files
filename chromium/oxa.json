@@ -1,0 +1,18 @@
+
+{
+    "ExtensionInstallForcelist": [
+        "pkehgijcmpdhfbdbbnkijodmdjhbjlgp",
+        "ekhagklcjbdpajgpjgmbionohlpdbjgc",
+        "nngceckbapebfimnlniiiahkandclblb",
+        "cjpalhdlnbpafiamejdnhcphjbkeiagm"
+    ],
+      "BrowserSignin": 0,
+      "SyncDisabled": true,
+      "PasswordManagerEnabled": false,
+      "TranslateEnabled": false,
+      "AutofillAddressEnabled": false,
+      "AutofillCreditCardEnabled": false,
+      "AutoplayAllowed": false,
+      "DefaultNotificationsSetting": 2,
+      "BackgroundModeEnabled": false
+}
