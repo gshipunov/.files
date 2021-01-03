@@ -87,7 +87,7 @@ vnoremap <leader>P "+P
 set updatetime=107
 
 " Activate linux coding style helper only in certain dirs
-let g:linuxsty_patterns = ["/usr/src", "/linux", "~/git/linux", "~/devel/linux"]
+let g:linuxsty_patterns = ["/usr/src", "/linux", "~/git/linux", "~/fun/linux", "~/devel/linux"]
 
 " markdown
 let g:markdown_syntax_conceal = 0
