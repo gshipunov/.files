@@ -7,26 +7,15 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Nifty stuff
-Plug 'jamessan/vim-gnupg'
-
 " Some config/whitespace automation
 Plug 'tpope/vim-sleuth'
 Plug 'ntpeters/vim-better-whitespace'
-
-" Git
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-
-" linting/formatting/completion
-Plug 'neomake/neomake'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 "Better syntax
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'vivien/vim-linux-coding-style'
 Plug 'NLKNguyen/c-syntax.vim'
-Plug 'hdima/python-syntax'
+Plug 'vim-python/python-syntax'
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'dag/vim-fish', {'for': 'fish'}
 Plug 'LnL7/vim-nix', {'for': 'nix'}
@@ -34,8 +23,6 @@ Plug 'chikamichi/mediawiki.vim'
 Plug 'cespare/vim-toml'
 
 call plug#end()
-
-set laststatus=1
 
 "" TeX and co stuff
 " disable TeX commands concealing
@@ -110,9 +97,3 @@ nnoremap U :echo "NOPE!"<CR>
 
 " do not conceal stuff
 set conceallevel=0
-
-" deoplete
-let g:deoplete#enable_at_startup = 1
-
-" neomake
-call neomake#configure#automake('rw', 1000)
