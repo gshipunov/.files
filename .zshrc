@@ -123,4 +123,5 @@ esac
 if ! type "direnv" > /dev/null; then
     eval "$(direnv hook zsh)"
 fi
+
 if [ -e /home/gshipunov/.nix-profile/etc/profile.d/nix.sh ]; then . /home/gshipunov/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
