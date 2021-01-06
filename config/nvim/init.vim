@@ -78,7 +78,7 @@ let g:linuxsty_patterns = ["/usr/src", "/linux", "~/git/linux", "~/fun/linux", "
 
 " markdown
 let g:markdown_syntax_conceal = 0
-let g:markdown_fenced_languages = ['c', 'html', 'python', 'scheme']
+let g:markdown_fenced_languages = ['c', 'html', 'python', 'scheme', 'yaml', 'sh']
 
 " disable modelines
 set nomodeline
