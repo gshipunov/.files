@@ -97,3 +97,5 @@ nnoremap U :echo "NOPE!"<CR>
 
 " do not conceal stuff
 set conceallevel=0
+
+set laststatus=1
