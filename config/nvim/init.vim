@@ -11,6 +11,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-sleuth'
 Plug 'ntpeters/vim-better-whitespace'
 
+" Interface
+Plug 'tpope/vim-vinegar'
+Plug 'jeffkreeftmeijer/vim-dim'
+
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
 "Better syntax
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'vivien/vim-linux-coding-style'
@@ -19,12 +27,14 @@ Plug 'vim-python/python-syntax'
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'dag/vim-fish', {'for': 'fish'}
 Plug 'LnL7/vim-nix', {'for': 'nix'}
-Plug 'chikamichi/mediawiki.vim'
+Plug 'chikamichi/mediawiki.vim', { 'for' : 'wiki' }
 Plug 'cespare/vim-toml'
+Plug 'JuliaEditorSupport/julia-vim', { 'for' : 'julia' }
 
 call plug#end()
 
-"" TeX and co stuff
+colorscheme dim
+
 " disable TeX commands concealing
 let g:tex_conceal = ''
 
@@ -32,33 +42,30 @@ let g:tex_conceal = ''
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
-" set line numbering
 set number
-
-" Set place for backups
 set nobackup
-
-" Swap for slacks
 set noswapfile
 
 " autosmartident
 set ai
 set si
-
-" Expand tabs to spaces
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set noexpandtab
-
-" show indentation
 set list
 
-" Enlarge your Undo!
+" arrows for visual line identation
+imap <up> <C-O>gk
+imap <down> <C-O>gj
+nmap <up> gk
+nmap <down> gj
+vmap <up> gk
+vmap <down> gj
+
 set history=999
 set undolevels=999
 
-" Copying and pasting
 " Copy to clipboard
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
@@ -70,7 +77,6 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-" Update more often
 set updatetime=107
 
 " Activate linux coding style helper only in certain dirs
@@ -97,5 +103,3 @@ nnoremap U :echo "NOPE!"<CR>
 
 " do not conceal stuff
 set conceallevel=0
-
-set laststatus=1
