@@ -7,6 +7,9 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+" insert images into markdown automagically
+Plug 'ferrine/md-img-paste.vim'
+
 " Some config/whitespace automation
 Plug 'tpope/vim-sleuth'
 Plug 'ntpeters/vim-better-whitespace'
@@ -22,8 +25,6 @@ Plug 'airblade/vim-gitgutter'
 "Better syntax
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'vivien/vim-linux-coding-style'
-Plug 'NLKNguyen/c-syntax.vim'
-Plug 'vim-python/python-syntax'
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'dag/vim-fish', {'for': 'fish'}
 Plug 'LnL7/vim-nix', {'for': 'nix'}
@@ -45,6 +46,7 @@ let maplocalleader = "\\"
 set number
 set nobackup
 set noswapfile
+set guicursor=
 
 " autosmartident
 set ai
@@ -53,7 +55,6 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set noexpandtab
-set list
 
 " arrows for visual line identation
 imap <up> <C-O>gk
@@ -103,3 +104,10 @@ nnoremap U :echo "NOPE!"<CR>
 
 " do not conceal stuff
 set conceallevel=0
+
+" insert images into markdown automagically
+autocmd FileType markdown nmap <buffer><silent> <localleader>p :call mdip#MarkdownClipboardImage()<CR>
+let g:mdip_imgdir = 'static'
+let g:mdip_imgname = 'image'
+
+set laststatus=1
