@@ -18,10 +18,6 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-vinegar'
 Plug 'jeffkreeftmeijer/vim-dim'
 
-" Git
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-
 "Better syntax
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'vivien/vim-linux-coding-style'

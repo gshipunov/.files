@@ -37,3 +37,5 @@ delcommand HiLink
 if exists('old_syntax')
   let b:current_syntax = old_syntax
 endif
+
+setlocal ts=2 sts=2 sw=2 expandtab
