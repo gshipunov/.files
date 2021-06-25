@@ -1,36 +1,24 @@
-" bootstrap vim-plug automagically
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync|source $MYVIMRC
+if has('nvim')
+	call plug#begin(stdpath('data') . '/plugged')
+else
+	set nocompatible
+	filetype plugin indent on
+	syntax enable
+
+	call plug#begin('~/.vim/plugged')
 endif
 
-call plug#begin('~/.local/share/nvim/plugged')
 
 " insert images into markdown automagically
 Plug 'ferrine/md-img-paste.vim'
 
-" Some config/whitespace automation
-Plug 'tpope/vim-sleuth'
-Plug 'ntpeters/vim-better-whitespace'
-
-" Interface
-Plug 'tpope/vim-vinegar'
-Plug 'jeffkreeftmeijer/vim-dim'
-
 "Better syntax
-Plug 'lervag/vimtex', {'for': 'tex'}
-Plug 'vivien/vim-linux-coding-style'
-Plug 'rust-lang/rust.vim', {'for': 'rust'}
-Plug 'dag/vim-fish', {'for': 'fish'}
-Plug 'LnL7/vim-nix', {'for': 'nix'}
-Plug 'chikamichi/mediawiki.vim', { 'for' : 'wiki' }
+Plug 'rust-lang/rust.vim'
+Plug 'LnL7/vim-nix'
 Plug 'cespare/vim-toml'
-Plug 'JuliaEditorSupport/julia-vim', { 'for' : 'julia' }
+Plug 'JuliaEditorSupport/julia-vim'
 
 call plug#end()
-
-colorscheme dim
 
 " disable TeX commands concealing
 let g:tex_conceal = ''
@@ -75,9 +63,6 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
 set updatetime=107
-
-" Activate linux coding style helper only in certain dirs
-let g:linuxsty_patterns = ["/usr/src", "/linux", "~/git/linux", "~/fun/linux", "~/devel/linux"]
 
 " markdown
 let g:markdown_syntax_conceal = 0
