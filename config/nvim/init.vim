@@ -18,7 +18,17 @@ Plug 'LnL7/vim-nix'
 Plug 'cespare/vim-toml'
 Plug 'JuliaEditorSupport/julia-vim'
 
+" Improved default colorscheme
+Plug 'jeffkreeftmeijer/vim-dim'
+
 call plug#end()
+
+colorscheme dim
+
+" Incrementally show effects of :s, :smagic, :snomagic
+if has('nvim')
+	set icm=split
+endif
 
 " disable TeX commands concealing
 let g:tex_conceal = ''
