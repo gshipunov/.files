@@ -37,7 +37,7 @@ let g:tex_conceal = ''
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
-set number
+set number relativenumber
 set nobackup
 set noswapfile
 set guicursor=
@@ -83,12 +83,6 @@ set nomodeline
 
 " change tab completion to more bash-like
 set wildmode=longest:full,list:full
-
-" I cannot spell
-set spelllang=en,ru,de
-nnoremap <F9> :set spell!<CR>
-inoremap <F9> <C-o>:set spell!<CR>
-set spellsuggest+=10
 
 " U is quite useless
 nnoremap U :echo "NOPE!"<CR>
