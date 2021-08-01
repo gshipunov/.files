@@ -1,2 +1,3 @@
 # neovim specific gitignore
 .netrwhist
+spell
