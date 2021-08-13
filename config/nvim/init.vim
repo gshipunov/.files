@@ -1,33 +1,26 @@
 if has('nvim')
 	call plug#begin(stdpath('data') . '/plugged')
+	" insert images into markdown automagically
+	Plug 'ferrine/md-img-paste.vim'
+
+	"Better syntax
+	Plug 'rust-lang/rust.vim'
+	Plug 'LnL7/vim-nix'
+	Plug 'cespare/vim-toml'
+	Plug 'JuliaEditorSupport/julia-vim'
+
+	call plug#end()
+
+	" Incrementally show effects of :s, :smagic, :snomagic
+	set icm=split
+	" insert images into markdown automagically
+	autocmd FileType markdown nmap <buffer><silent> <localleader>p :call mdip#MarkdownClipboardImage()<CR>
+	let g:mdip_imgdir = 'static'
+	let g:mdip_imgname = 'image'
 else
 	set nocompatible
 	filetype plugin indent on
 	syntax enable
-
-	call plug#begin('~/.vim/plugged')
-endif
-
-
-" insert images into markdown automagically
-Plug 'ferrine/md-img-paste.vim'
-
-"Better syntax
-Plug 'rust-lang/rust.vim'
-Plug 'LnL7/vim-nix'
-Plug 'cespare/vim-toml'
-Plug 'JuliaEditorSupport/julia-vim'
-
-" Improved default colorscheme
-Plug 'jeffkreeftmeijer/vim-dim'
-
-call plug#end()
-
-colorscheme dim
-
-" Incrementally show effects of :s, :smagic, :snomagic
-if has('nvim')
-	set icm=split
 endif
 
 " disable TeX commands concealing
@@ -89,10 +82,5 @@ nnoremap U :echo "NOPE!"<CR>
 
 " do not conceal stuff
 set conceallevel=0
-
-" insert images into markdown automagically
-autocmd FileType markdown nmap <buffer><silent> <localleader>p :call mdip#MarkdownClipboardImage()<CR>
-let g:mdip_imgdir = 'static'
-let g:mdip_imgname = 'image'
 
 set laststatus=1
