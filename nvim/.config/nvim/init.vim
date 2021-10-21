@@ -1,38 +1,32 @@
-if has('nvim')
-	call plug#begin(stdpath('data') . '/plugged')
-	" insert images into markdown automagically
-	Plug 'ferrine/md-img-paste.vim'
+call plug#begin(stdpath('data') . '/plugged')
+" insert images into markdown automagically
+Plug 'ferrine/md-img-paste.vim'
 
-	"Better syntax
-	Plug 'rust-lang/rust.vim'
-	Plug 'LnL7/vim-nix'
-	Plug 'cespare/vim-toml'
-	Plug 'JuliaEditorSupport/julia-vim'
-	Plug 'lervag/vimtex'
-	Plug 'airblade/vim-gitgutter'
-	Plug 'vim-pandoc/vim-pandoc'
-	Plug 'vim-pandoc/vim-pandoc-syntax'
-	Plug 'vim-pandoc/vim-rmarkdown'
+"Better syntax
+Plug 'rust-lang/rust.vim'
+Plug 'LnL7/vim-nix'
+Plug 'cespare/vim-toml'
+Plug 'JuliaEditorSupport/julia-vim'
+Plug 'lervag/vimtex'
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-rmarkdown'
 
-	" LSP
-	Plug 'neovim/nvim-lspconfig'
+" LSP
+Plug 'neovim/nvim-lspconfig'
 
-	" Colors
-	Plug 'jeffkreeftmeijer/vim-dim'
+" Colors
+Plug 'jeffkreeftmeijer/vim-dim'
 
-	call plug#end()
+call plug#end()
 
-	" Incrementally show effects of :s, :smagic, :snomagic
-	set icm=split
-	" insert images into markdown automagically
-	autocmd FileType markdown nmap <buffer><silent> <localleader>p :call mdip#MarkdownClipboardImage()<CR>
-	let g:mdip_imgdir = 'static'
-	let g:mdip_imgname = 'image'
-else
-	set nocompatible
-	filetype plugin indent on
-	syntax enable
-endif
+" Incrementally show effects of :s, :smagic, :snomagic
+set icm=split
+" insert images into markdown automagically
+autocmd FileType markdown nmap <buffer><silent> <localleader>p :call mdip#MarkdownClipboardImage()<CR>
+let g:mdip_imgdir = 'static'
+let g:mdip_imgname = 'image'
 
 colorscheme dim
 
@@ -96,3 +90,6 @@ set conceallevel=0
 " and another time for supid ones who continue to insist
 let g:pandoc#syntax#conceal#use = 0
 let g:tex_conceal = ''
+
+" vim-pandoc really tries to be 'user-friendly'...
+let g:pandoc#modules#disabled = [ "spell", "folding" ]
