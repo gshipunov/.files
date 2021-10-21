@@ -8,6 +8,7 @@ if has('nvim')
 	Plug 'LnL7/vim-nix'
 	Plug 'cespare/vim-toml'
 	Plug 'JuliaEditorSupport/julia-vim'
+	Plug 'lervag/vimtex'
 
 	call plug#end()
 
@@ -23,8 +24,6 @@ else
 	syntax enable
 endif
 
-" disable TeX commands concealing
-let g:tex_conceal = ''
 
 " space is our leader!
 let mapleader = "\<Space>"
@@ -82,5 +81,5 @@ nnoremap U :echo "NOPE!"<CR>
 
 " do not conceal stuff
 set conceallevel=0
-
-set laststatus=1
+" and another time for supid ones who continue to insist
+let g:tex_conceal = ''
