@@ -9,9 +9,16 @@ if has('nvim')
 	Plug 'cespare/vim-toml'
 	Plug 'JuliaEditorSupport/julia-vim'
 	Plug 'lervag/vimtex'
+	Plug 'airblade/vim-gitgutter'
 	Plug 'vim-pandoc/vim-pandoc'
 	Plug 'vim-pandoc/vim-pandoc-syntax'
 	Plug 'vim-pandoc/vim-rmarkdown'
+
+	" LSP
+	Plug 'neovim/nvim-lspconfig'
+
+	" Colors
+	Plug 'jeffkreeftmeijer/vim-dim'
 
 	call plug#end()
 
@@ -27,12 +34,14 @@ else
 	syntax enable
 endif
 
+colorscheme dim
+
+set number
 
 " space is our leader!
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
-set number relativenumber
 set nobackup
 set noswapfile
 set guicursor=
