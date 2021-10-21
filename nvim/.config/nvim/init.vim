@@ -9,6 +9,9 @@ if has('nvim')
 	Plug 'cespare/vim-toml'
 	Plug 'JuliaEditorSupport/julia-vim'
 	Plug 'lervag/vimtex'
+	Plug 'vim-pandoc/vim-pandoc'
+	Plug 'vim-pandoc/vim-pandoc-syntax'
+	Plug 'vim-pandoc/vim-rmarkdown'
 
 	call plug#end()
 
@@ -82,4 +85,5 @@ nnoremap U :echo "NOPE!"<CR>
 " do not conceal stuff
 set conceallevel=0
 " and another time for supid ones who continue to insist
+let g:pandoc#syntax#conceal#use = 0
 let g:tex_conceal = ''
