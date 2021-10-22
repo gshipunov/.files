@@ -19,6 +19,9 @@ Plug 'neovim/nvim-lspconfig'
 " Colors
 Plug 'jeffkreeftmeijer/vim-dim'
 
+" Slimey stuff
+Plug 'kassio/neoterm'
+
 call plug#end()
 
 " Incrementally show effects of :s, :smagic, :snomagic
@@ -93,3 +96,13 @@ let g:tex_conceal = ''
 
 " vim-pandoc really tries to be 'user-friendly'...
 let g:pandoc#modules#disabled = [ "spell", "folding" ]
+
+" neoterm
+let g:neoterm_default_mod='belowright' " open terminal in bottom split
+let g:neoterm_size=19 " terminal split size
+let g:neoterm_autoscroll=1 " scroll to the bottom when running a command
+" REPL interaction
+nnoremap <leader><cr> :TREPLSendLine<cr>j
+vnoremap <leader><cr> :TREPLSendSelection<cr>
+" R REPL
+nnoremap <leader>tr :T R<cr>
