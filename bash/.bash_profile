@@ -9,4 +9,4 @@ fi
 
 export EDITOR=nvim
 
-if [ -e /home/0xa/.nix-profile/etc/profile.d/nix.sh ]; then . /home/0xa/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+if [ -e /home/gshipunov/.nix-profile/etc/profile.d/nix.sh ]; then . /home/gshipunov/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
