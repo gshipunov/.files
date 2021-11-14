@@ -19,9 +19,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-rmarkdown'
-
-" LSP
-Plug 'neovim/nvim-lspconfig'
+Plug 'lepture/vim-jinja'
 
 " Colors
 Plug 'jeffkreeftmeijer/vim-dim'
