@@ -3,8 +3,7 @@
         "pkehgijcmpdhfbdbbnkijodmdjhbjlgp",
         "ekhagklcjbdpajgpjgmbionohlpdbjgc",
         "nngceckbapebfimnlniiiahkandclblb",
-        "cjpalhdlnbpafiamejdnhcphjbkeiagm",
-        "dbepggeogbaibhgnhhndojpepiihcmeb"
+        "cjpalhdlnbpafiamejdnhcphjbkeiagm"
     ],
       "BrowserSignin": 0,
       "SyncDisabled": true,
@@ -15,5 +14,8 @@
       "AutoplayAllowed": false,
       "DefaultNotificationsSetting": 2,
       "BackgroundModeEnabled": false,
-      "MediaRecommendationsEnabled": false
+      "MediaRecommendationsEnabled": false,
+      "DefaultSearchProviderEnabled": true,
+      "DefaultSearchProviderSearchURL": "https://duckduckgo.com/?q={searchTerms}",
+      "SearchSuggestEnable": false
 }
