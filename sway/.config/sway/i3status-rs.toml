@@ -1,0 +1,48 @@
+theme = "native"
+
+[icons]
+name = "none"
+
+[[block]]
+block = "networkmanager"
+interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
+interface_name_include = []
+ap_format = "{ssid^5}"
+device_format = "{name} {ap} {ips}"
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{mem_used_percents}"
+format_swap = "{swap_used_percents}"
+
+[[block]]
+block = "load"
+interval = 1
+format = "{1m} {5m} {15m}"
+icons_format = " "
+
+[[block]]
+block = "sound"
+on_click = "alacritty -e pulsemixer"
+
+[[block]]
+block = "time"
+interval = 5
+format = "%a %F %T"
+interval = 1
+icons_format = " "
+
+[[block]]
+block = "keyboard_layout"
+driver = "sway"
+format = "{layout}"
+[block.mappings]
+"English (US)" = "EN"
+"Russian (N/A)" = "RU"
+
+[[block]]
+block = "battery"
+driver = "upower"
+format = "{percentage}"
+if_command = "test -e /sys/class/power_supply/BAT0"

@@ -6,6 +6,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin(stdpath('data') . '/plugged')
+
 " insert images into markdown automagically
 Plug 'ferrine/md-img-paste.vim'
 
@@ -15,28 +16,49 @@ Plug 'LnL7/vim-nix'
 Plug 'cespare/vim-toml'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'lervag/vimtex'
-Plug 'airblade/vim-gitgutter'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-rmarkdown'
 Plug 'lepture/vim-jinja'
 
-" Colors
-Plug 'jeffkreeftmeijer/vim-dim'
-
 " Slimey stuff
 Plug 'kassio/neoterm'
 
+" lsp
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'ms-jpq/coq_nvim'
+
+" pretty bits
+Plug 'jeffkreeftmeijer/vim-dim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'luochen1990/rainbow'
+
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+" completion
+Plug 'Shougo/deoplete.nvim'
+
 call plug#end()
+
+" filetype magic
+autocmd BufRead,BufNewFile *.nasm set filetype=nasm
+
+" Theme
+colorscheme dim
+let g:airline_theme='monochrome'
+let g:rainbow_active = 1
+
+" langmap russian
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 " Incrementally show effects of :s, :smagic, :snomagic
 set icm=split
+
 " insert images into markdown automagically
 autocmd FileType markdown nmap <buffer><silent> <localleader>p :call mdip#MarkdownClipboardImage()<CR>
 let g:mdip_imgdir = 'static'
 let g:mdip_imgname = 'image'
-
-colorscheme dim
 
 set number
 
@@ -44,7 +66,7 @@ set number
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
-set nobackup
+set nobackup nowritebackup
 set noswapfile
 set guicursor=
 
@@ -54,9 +76,9 @@ set si
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set noexpandtab
+set expandtab
 
-" arrows for visual line identation
+" arrows for visual line navigation
 imap <up> <C-O>gk
 imap <down> <C-O>gj
 nmap <up> gk
@@ -82,10 +104,13 @@ set updatetime=107
 
 " markdown
 let g:markdown_syntax_conceal = 0
-let g:markdown_fenced_languages = ['c', 'html', 'python', 'scheme', 'yaml', 'sh']
+let g:markdown_fenced_languages = ['c', 'html', 'python', 'scheme', 'yaml', 'sh', 'json']
 
 " disable modelines
 set nomodeline
+
+" autocomplete
+let g:deoplete#enable_at_startup = 1
 
 " change tab completion to more bash-like
 set wildmode=longest:full,list:full
@@ -108,6 +133,10 @@ let g:neoterm_size=19 " terminal split size
 let g:neoterm_autoscroll=1 " scroll to the bottom when running a command
 " REPL interaction
 nnoremap <leader><cr> :TREPLSendLine<cr>j
+nnoremap <leader>cc :TREPLSendFile
 vnoremap <leader><cr> :TREPLSendSelection<cr>
-" R REPL
-nnoremap <leader>tr :T R<cr>
+
+" lsp (in lua), and completion
+"lua require('lsp-config')
+highlight RedundantSpaces ctermbg=red guibg=red
+match RedundantSpaces /\s\+$/
