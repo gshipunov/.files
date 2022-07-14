@@ -11,12 +11,21 @@
 [credential]
 	helper = cache --timeout 28800
 [alias]
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	diffw = diff --word-diff=color
+	diffs = diff --stat
 	diffstat = diff --stat
+	diffw = diff --word-diff=color
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    br = branch
+    ci = commit
+    ciall = commit -a
+    ciam = commit --amend
+    co = checkout
+    dic = diff --cached
+    dif = diff
+    s = status
 [pull]
 	ff = only
 [init]
-	defaultBranch = main
+	defaultBranch = master
 [safe]
 	directory = /etc/nixos

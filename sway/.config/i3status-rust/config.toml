@@ -1,0 +1,58 @@
+[theme]
+name = "foot.toml"
+
+[icons]
+name = "awesome6"
+
+[[block]]
+block = "maildir"
+interval = 60
+inboxes = ["/home/grue/mail/mail@oxapentane.com/INBOX", "/home/grue/mail/mail@oxapentane.com/sinkhole", "/home/grue/mail/dump@dvb.solutions/INBOX", "/home/grue/mail/grigory@shipunov.xyz/INBOX"]
+threshold_warning = 1
+threshold_critical = 10
+display_type = "new"
+on_click = "foot mbsync -a"
+
+[[block]]
+block = "net"
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{mem_used_percents}"
+format_swap = "{swap_used_percents}"
+
+[[block]]
+block = "cpu"
+format = "{barchart} {utilization}"
+
+[[block]]
+block = "load"
+interval = 1
+format = "{1m} {5m} {15m}"
+icons_format = " "
+
+[[block]]
+block = "sound"
+on_click = "foot -e pulsemixer"
+
+[[block]]
+block = "keyboard_layout"
+driver = "sway"
+format = "{layout}"
+[block.mappings]
+"English (US)" = "UWU"
+"Russian (N/A)" = "ЪУЪ"
+
+[[block]]
+block = "battery"
+driver = "upower"
+format = "{percentage} {time}"
+if_command = "test -e /sys/class/power_supply/BAT0"
+
+[[block]]
+block = "time"
+interval = 5
+format = "%a %F %T"
+interval = 1
+icons_format = " "

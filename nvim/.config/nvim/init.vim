@@ -20,24 +20,23 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-rmarkdown'
 Plug 'lepture/vim-jinja'
+Plug 'neomutt/neomutt.vim'
 
 " Slimey stuff
 Plug 'kassio/neoterm'
 
-" lsp
-" Plug 'neovim/nvim-lspconfig'
-" Plug 'ms-jpq/coq_nvim'
-
 " pretty bits
 Plug 'jeffkreeftmeijer/vim-dim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'luochen1990/rainbow'
 
+" Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+
 " completion
 Plug 'Shougo/deoplete.nvim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -46,8 +45,8 @@ autocmd BufRead,BufNewFile *.nasm set filetype=nasm
 
 " Theme
 colorscheme dim
-let g:airline_theme='monochrome'
-let g:rainbow_active = 1
+
+let g:rainbow_active = 1 " rainbow delimiters
 
 " langmap russian
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
@@ -117,6 +116,9 @@ set wildmode=longest:full,list:full
 
 " U is quite useless
 nnoremap U :echo "NOPE!"<CR>
+" help is quite annoying when you miss esc
+map <F1> <Esc>
+imap <F1> <Esc>
 
 " do not conceal stuff
 set conceallevel=0
@@ -138,5 +140,14 @@ vnoremap <leader><cr> :TREPLSendSelection<cr>
 
 " lsp (in lua), and completion
 "lua require('lsp-config')
+
+" Whitespace highlight
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$/
+
+" fzf
+nmap <leader>f :Files<cr>
+nmap <leader>b :Buffers<cr>
+
+" set terminal title
+set title

@@ -1,0 +1,6 @@
+# vim: filetype=neomuttrc
+source ./defaults.muttrc
+source ./accounts/1-mail@oxapentane.com.muttrc
+macro index,pager i1 '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/1-mail@oxapentane.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to mail@oxapentane.com"
+macro index,pager i2 '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/2-grigory@shipunov.xyz.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to grigory@shipunov.xyz"
+macro index,pager i3 '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/3-dump@dvb.solutions.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to dump@dvb.solutions"
