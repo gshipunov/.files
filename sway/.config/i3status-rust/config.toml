@@ -15,6 +15,12 @@ on_click = "foot mbsync -a"
 
 [[block]]
 block = "net"
+device = "wlan0"
+format = "{ssid} {signal_strength}"
+
+[[block]]
+block = "net"
+device = "james"
 
 [[block]]
 block = "memory"
@@ -24,17 +30,16 @@ format_swap = "{swap_used_percents}"
 
 [[block]]
 block = "cpu"
-format = "{barchart} {utilization}"
+format = "{frequency} {barchart} {utilization}"
 
 [[block]]
 block = "load"
-interval = 1
 format = "{1m} {5m} {15m}"
-icons_format = " "
 
 [[block]]
 block = "sound"
 on_click = "foot -e pulsemixer"
+headphones_indicator = true
 
 [[block]]
 block = "keyboard_layout"

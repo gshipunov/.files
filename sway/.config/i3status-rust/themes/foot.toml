@@ -4,7 +4,7 @@ idle_fg = "#dcdccc"
 good_bg = "#7f9f7f"
 good_fg = "#111111"
 
-info_bg = "#cc9393"
+info_bg = "#6ca0a3"
 info_fg = "#111111"
 
 warning_bg = "#f0dfaf"

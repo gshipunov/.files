@@ -24,7 +24,7 @@ set $menu wofi --show drun -i | xargs swaymsg exec --
 #
 # Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
 # output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg ~/.wall.png fill
+output * bg ./wall.jpg fill
 #
 # Example configuration:
 #
@@ -37,9 +37,9 @@ output * bg ~/.wall.png fill
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 300  'swaylock-fancy  --show-failed-attempts --daemonize -p -t "MICROWAVE ON HIGH FOR FIVE MINUTES"' \
+         timeout 300 'swaylock -eFfk -i ~/.config/sway/wall.jpg -s fill' \
          timeout 303 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock-fancy  --show-failed-attempts --daemonize -p -t "MICROWAVE ON HIGH FOR FIVE MINUTES"'
+         before-sleep 'swaylock -eFfk -i ~/.config/sway/wall.jpg -s fill'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -100,7 +100,7 @@ focus_follows_mouse no
     bindsym --to-code XF86AudioRaiseVolume exec 'pamixer -i 1'
     bindsym --to-code XF86AudioLowerVolume exec 'pamixer -d 1'
     bindsym --to-code XF86AudioMute exec 'pamixer -t'
-    bindsym --to-code $mod+Delete exec 'swaylock-fancy  --show-failed-attempts --daemonize -p -t "MICROWAVE ON HIGH FOR FIVE MINUTES"'
+    bindsym --to-code $mod+Delete exec 'swaylock -eFfk -i ~/.config/sway/wall.jpg -s fill'
     #bindsym --to-code $mod+Mod1+p exec 'flameshot gui'
     bindsym --to-code $mod+p exec 'grim -g "$(slurp)" - | wl-copy'
     bindsym --to-code $mod+Mod1+p exec 'grim -g "$(slurp)" ~/Pictures/$(date +"%Y-%m-%d-%H-%M-%S").png'
@@ -250,7 +250,8 @@ bar {
 default_border pixel 2
 # Set font
 font pango:Hack, Font Awesome 6 Free 9
-# font pango:ttyp0 10
-#font pango:JuliaMono 9
+
+exec nextcloud --background
+exec iwgtk -i
 
 include /etc/sway/config.d/*
