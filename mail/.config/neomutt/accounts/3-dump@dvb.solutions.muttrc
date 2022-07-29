@@ -5,8 +5,8 @@ set from = "dump@dvb.solutions"
 set sendmail = "msmtp -a dump@dvb.solutions"
 alias me dump <dump@dvb.solutions>
 set folder = "~/mail/dump@dvb.solutions"
-set header_cache = ~/dump@dvb.solutions/headers
-set message_cachedir = ~/dump@dvb.solutions/bodies
+set header_cache = "~/.cache/mutt-cache/dump@dvb.solutions/headers"
+set message_cachedir = "~/.cache/mutt-cache/dump@dvb.solutions/bodies"
 set mbox_type = Maildir
 
 
@@ -44,3 +44,5 @@ macro index,pager gi "<change-folder>=INBOX<enter>" "go to inbox"
 macro index,pager Mi ";<save-message>=INBOX<enter>" "move mail to inbox"
 macro index,pager Ci ";<copy-message>=INBOX<enter>" "copy mail to inbox"
 set spoolfile = "+INBOX"
+
+source ./nocrypt.muttrc

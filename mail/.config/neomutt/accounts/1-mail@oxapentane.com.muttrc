@@ -7,8 +7,8 @@ set reverse_name
 set sendmail = "msmtp -a mail@oxapentane.com"
 alias me 0xA <mail@oxapentane.com>
 set folder = "~/mail/mail@oxapentane.com"
-set header_cache = ~/mail/mail@oxapentane.com/headers
-set message_cachedir = ~/mail/mail@oxapentane.com/bodies
+set header_cache = "~/.cache/mutt-cache/mail@oxapentane.com/headers"
+set message_cachedir = "~/.cache/mutt-cache/mail@oxapentane.com/bodies"
 set mbox_type = Maildir
 
 
@@ -49,3 +49,5 @@ macro index,pager gt "<change-folder>=Trash<enter>" "go to trash"
 macro index,pager Mt ";<save-message>=Trash<enter>" "move mail to trash"
 macro index,pager Ct ";<copy-message>=Trash<enter>" "copy mail to trash"
 set trash = "+Trash"
+
+source ./crypt.muttrc

@@ -1,8 +1,9 @@
 [database]
 path=/home/grue/mail
 [user]
-name=mail
+name=Grigory Shipunov
 primary_email=mail@oxapentane.com
+other_email=grigory@shipunov.xyz;*@oxapentane.com;dump@dvb.solutions
 [new]
 tags=unread;inbox;
 ignore=.mbsyncstate;.uidvalidity
