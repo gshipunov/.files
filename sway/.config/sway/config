@@ -18,7 +18,7 @@ set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi --show drun -i | xargs swaymsg exec --
+set $menu rofi -show combi | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -74,6 +74,9 @@ focus_follows_mouse no
     # Start a terminal
     bindsym --to-code $mod+Return exec $term
 
+    # Start an editor
+    bindsym --to-code $mod+z exec emacsclient -a="" --create-frame
+
     # Kill focused window
     bindsym --to-code $mod+Shift+q kill
 
@@ -101,7 +104,6 @@ focus_follows_mouse no
     bindsym --to-code XF86AudioLowerVolume exec 'pamixer -d 1'
     bindsym --to-code XF86AudioMute exec 'pamixer -t'
     bindsym --to-code $mod+Delete exec 'swaylock -eFfk -i ~/.config/sway/wall.jpg -s fill'
-    #bindsym --to-code $mod+Mod1+p exec 'flameshot gui'
     bindsym --to-code $mod+p exec 'grim -g "$(slurp)" - | wl-copy'
     bindsym --to-code $mod+Mod1+p exec 'grim -g "$(slurp)" ~/Pictures/$(date +"%Y-%m-%d-%H-%M-%S").png'
 
@@ -220,7 +222,7 @@ mode "resize" {
 bindsym --to-code $mod+r mode "resize"
 
 ## Styling: colors
-include colors
+include gruvbox
 
 ## Window styling
 #                       Border      BG          Text        Indicator   Child Border
@@ -233,7 +235,7 @@ client.focused          $color05    $color05    $color00    $color01    $color05
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
-    font pango:Hack, Font Awesome 6 Free 9
+    font pango:Hack, Font Awesome 6 Free 8
     icon_theme "Adwaita"
     status_command /run/current-system/sw/bin/i3status-rs
     colors {
@@ -249,9 +251,10 @@ bar {
 # default border
 default_border pixel 2
 # Set font
-font pango:Hack, Font Awesome 6 Free 9
+font pango:Hack, Font Awesome 6 Free 8
 
 exec nextcloud --background
 exec iwgtk -i
+exec blueman-applet
 
 include /etc/sway/config.d/*

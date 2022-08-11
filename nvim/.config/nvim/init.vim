@@ -26,7 +26,8 @@ Plug 'neomutt/neomutt.vim'
 Plug 'kassio/neoterm'
 
 " pretty bits
-Plug 'jeffkreeftmeijer/vim-dim'
+Plug 'gruvbox-community/gruvbox'
+Plug 'vim-airline/vim-airline'
 Plug 'luochen1990/rainbow'
 
 " Git
@@ -44,8 +45,10 @@ call plug#end()
 autocmd BufRead,BufNewFile *.nasm set filetype=nasm
 
 " Theme
-colorscheme dim
-
+set termguicolors
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
+let g:airline_theme = 'gruvbox'
 let g:rainbow_active = 1 " rainbow delimiters
 
 " langmap russian
@@ -67,7 +70,6 @@ let maplocalleader = "\\"
 
 set nobackup nowritebackup
 set noswapfile
-set guicursor=
 
 " autosmartident
 set ai
@@ -148,6 +150,3 @@ match RedundantSpaces /\s\+$/
 " fzf
 nmap <leader>f :Files<cr>
 nmap <leader>b :Buffers<cr>
-
-" set terminal title
-set title
