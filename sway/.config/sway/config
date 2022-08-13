@@ -135,6 +135,11 @@ focus_follows_mouse no
 #
 # Workspaces:
 #
+    # move workspace between inputs
+    bindsym $mod+Mod1+Left move workspace to output left
+    bindsym $mod+Mod1+Right move workspace to output right
+    bindsym $mod+Mod1+Up move workspace to output up
+    bindsym $mod+Mod1+Down move workspace to output down
     # Switch to workspace
     bindsym --to-code $mod+1 workspace number 1
     bindsym --to-code $mod+2 workspace number 2
