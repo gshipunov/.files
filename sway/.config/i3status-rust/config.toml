@@ -13,7 +13,7 @@ inboxes = ["/home/grue/mail/mail@oxapentane.com/INBOX", "/home/grue/mail/mail@ox
 threshold_warning = 1
 threshold_critical = 10
 display_type = "new"
-on_click = "foot neomutt"
+on_click = "foot zsh -c neomutt"
 
 [[block]]
 block = "backlight"
@@ -46,7 +46,7 @@ format = "{1m} {5m} {15m}"
 
 [[block]]
 block = "sound"
-on_click = "foot -e pulsemixer"
+on_click = "foot zsh -c pulsemixer"
 headphones_indicator = true
 
 [[block]]
