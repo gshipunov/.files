@@ -1,7 +1,5 @@
 [theme]
-name = "gruvbox-dark"
-[theme.overrides]
-idle_bg = "#1d2021"
+name = "moonfly"
 
 [icons]
 name = "awesome6"
@@ -46,7 +44,7 @@ format = "{1m} {5m} {15m}"
 
 [[block]]
 block = "sound"
-on_click = "foot zsh -c pulsemixer"
+on_click = "foot --app-id floating-foot zsh -c pulsemixer"
 headphones_indicator = true
 
 [[block]]
@@ -65,7 +63,4 @@ if_command = "test -e /sys/class/power_supply/BAT0"
 
 [[block]]
 block = "time"
-interval = 5
-format = "%a %F %T"
-interval = 1
-icons_format = " "
+format = "%a %F %R"

@@ -15,6 +15,8 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term foot
+set $floatterm foot --app-id floating-foot
+
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -50,10 +52,12 @@ exec swayidle -w \
 # Example configuration:
 #
   input "10248:257:FTCS1000:00_2808:0101_Touchpad" {
+      accel_profile adaptive
+      click_method clickfinger
       dwt enabled
-      tap enabled
-      natural_scroll enabled
       middle_emulation enabled
+      natural_scroll enabled
+      tap enabled
   }
 
   input * {
@@ -64,8 +68,9 @@ exec swayidle -w \
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
-### override defaults
-focus_follows_mouse no
+focus_follows_mouse yes
+mouse_warping container
+seat * hide_cursor 5000
 
 ### Key bindings
 #
@@ -73,6 +78,9 @@ focus_follows_mouse no
 #
     # Start a terminal
     bindsym --to-code $mod+Return exec $term
+    # start a floating terminal
+    bindsym --to-code $mod+Shift+Return exec $floatterm
+    for_window [app_id="floating-foot"] floating enable
 
     # Start an editor
     bindsym --to-code $mod+z exec emacsclient -a="" --create-frame
@@ -104,8 +112,10 @@ focus_follows_mouse no
     bindsym --to-code XF86AudioLowerVolume exec 'pamixer -d 1'
     bindsym --to-code XF86AudioMute exec 'pamixer -t'
     bindsym --to-code $mod+Delete exec 'swaylock -eFfk -i ~/.config/sway/wall.jpg -s fill'
-    bindsym --to-code $mod+p exec 'grim -g "$(slurp)" - | wl-copy'
-    bindsym --to-code $mod+Mod1+p exec 'grim -g "$(slurp)" ~/Pictures/$(date +"%Y-%m-%d-%H-%M-%S").png'
+    bindsym --to-code Print exec 'grim -g "$(slurp)" - | wl-copy'
+    bindsym --to-code $mod+Print exec 'grim -g "$(slurp)" ~/Pictures/$(date +"%Y-%m-%d-%H-%M-%S").png'
+    bindsym --to-code $mod+m exec 'makoctl dismiss -a'
+    bindsym --to-code $mod+Shift+m exec 'makoctl restore'
 
 
 #
@@ -189,6 +199,7 @@ focus_follows_mouse no
 
     # Move focus to the parent container
     bindsym --to-code $mod+a focus parent
+    bindsym --to-code $mod+Shift+a focus child
 #
 # Scratchpad:
 #
@@ -209,10 +220,10 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym --to-code $left resize shrink width 10px
-    bindsym --to-code $down resize grow height 10px
-    bindsym --to-code $up resize shrink height 10px
-    bindsym --to-code $right resize grow width 10px
+    bindsym --to-code $left resize shrink width 30px
+    bindsym --to-code $down resize grow height 30px
+    bindsym --to-code $up resize shrink height 30px
+    bindsym --to-code $right resize grow width 30px
 
     # Ditto, with arrow keys
     bindsym --to-code Left resize shrink width 10px
@@ -227,11 +238,11 @@ mode "resize" {
 bindsym --to-code $mod+r mode "resize"
 
 ## Styling: colors
-include gruvbox
+include moonfly
 
 ## Window styling
 #                       Border      BG          Text        Indicator   Child Border
-client.focused          $color05    $color05    $color00    $color01    $color05
+client.focused          $color06    $color06    $color00    $color07    $color06
 #client.focused_inactive $color00    $color00    $color00    $color00    $color00
 
 #
@@ -240,7 +251,7 @@ client.focused          $color05    $color05    $color00    $color01    $color05
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
-    font pango:Hack, Font Awesome 6 Free 8
+    font pango:JuliaMono, Font Awesome 6 Free 8
     icon_theme "Adwaita"
     status_command /run/current-system/sw/bin/i3status-rs
     colors {
@@ -249,17 +260,31 @@ bar {
         # statusline $color15
 
         # STATE             Border      BG          Text
-        focused_workspace   $color15    $color05    $color00
+        focused_workspace   $color06    $color06    $color00
     }
 }
 
 # default border
 default_border pixel 2
 # Set font
-font pango:Hack, Font Awesome 6 Free 8
+font pango:JuliaMono 8
 
+# Startup applications
 exec nextcloud --background
 exec iwgtk -i
 exec blueman-applet
+exec wlsunset -l 51 -L 14
 
+# window rules
+# floating
+for_window [app_id="imv"] floating enable; border normal
+for_window [app_id="org.twosheds.iwgtk"] floating enable; border normal
+for_window [app_id=".blueman-manager-wrapped"] floating enable; border normal
+for_window [app_id="com.nextcloud.desktopclient.nextcloud"] floating enable; border normal
+
+# tabbed containers
+for_window [app_id="CubicSDR"] layout tabbed
+for_window [app_id="org.wireshark.Wireshark"] layout tabbed
+
+include ./config.d/*
 include /etc/sway/config.d/*

@@ -16,28 +16,21 @@ Plug 'LnL7/vim-nix'
 Plug 'cespare/vim-toml'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'lervag/vimtex'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'vim-pandoc/vim-rmarkdown'
 Plug 'lepture/vim-jinja'
 Plug 'neomutt/neomutt.vim'
-
-" Slimey stuff
-Plug 'kassio/neoterm'
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
 
 " pretty bits
-Plug 'gruvbox-community/gruvbox'
+Plug 'bluz71/vim-moonfly-colors'
+"Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'luochen1990/rainbow'
 
-" Git
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-
-" completion
-Plug 'Shougo/deoplete.nvim'
-Plug 'junegunn/fzf'
+" navigating files
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
 
 call plug#end()
 
@@ -46,16 +39,18 @@ autocmd BufRead,BufNewFile *.nasm set filetype=nasm
 
 " Theme
 set termguicolors
-let g:gruvbox_contrast_dark = 'hard'
-colorscheme gruvbox
-let g:airline_theme = 'gruvbox'
-let g:rainbow_active = 1 " rainbow delimiters
+let g:airline#extensions#tabline#enabled = 1
+set noshowmode " airline shows it for us
+let g:airline#extensions#tabline#buffer_min_count = 2
+let g:airline_theme = 'moonfly'
+colorscheme moonfly
 
 " langmap russian
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 " Incrementally show effects of :s, :smagic, :snomagic
 set icm=split
+set signcolumn=yes
 
 " insert images into markdown automagically
 autocmd FileType markdown nmap <buffer><silent> <localleader>p :call mdip#MarkdownClipboardImage()<CR>
@@ -124,30 +119,23 @@ imap <F1> <Esc>
 
 " do not conceal stuff
 set conceallevel=0
-" and another time for supid ones who continue to insist
-let g:pandoc#syntax#conceal#use = 0
-let g:tex_conceal = ''
-
-" vim-pandoc really tries to be 'user-friendly'...
-let g:pandoc#modules#disabled = [ "spell", "folding" ]
-
-" neoterm
-let g:neoterm_default_mod='belowright' " open terminal in bottom split
-let g:neoterm_size=19 " terminal split size
-let g:neoterm_autoscroll=1 " scroll to the bottom when running a command
-" REPL interaction
-nnoremap <leader><cr> :TREPLSendLine<cr>j
-nnoremap <leader>cc :TREPLSendFile
-vnoremap <leader><cr> :TREPLSendSelection<cr>
-
-" lsp (in lua), and completion
-"lua require('lsp-config')
+set foldlevel=999
 
 " Whitespace highlight
 highlight RedundantSpaces ctermbg=red guibg=red
-match RedundantSpaces /\s\+$/
+match RedundantSpaces /\s\+\%#\@<!$/
+
+" TeX
+let g:tex_conceal = ''
 
 " fzf
-nmap <leader>f :GitFiles<cr>
-nmap <leader>F :Files<cr>
-nmap <leader>b :Buffers<cr>
+nnoremap <leader>f <cmd>GFiles<cr>
+nnoremap <leader>g <cmd>Rg<cr>
+nnoremap <leader>b <cmd>Buffers<cr>
+nnoremap <leader>F <cmd>Files<cr>
+
+" highlight yanked text
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
+augroup END
