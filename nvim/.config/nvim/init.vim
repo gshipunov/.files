@@ -105,7 +105,7 @@ set updatetime=107
 
 " markdown
 let g:markdown_syntax_conceal = 0
-let g:markdown_fenced_languages = ['c', 'html', 'python', 'scheme', 'yaml', 'sh', 'json']
+let g:markdown_fenced_languages = ['c', 'html', 'python', 'rust', 'scheme', 'yaml', 'sh', 'json']
 
 " disable modelines
 set nomodeline
@@ -148,5 +148,6 @@ highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$/
 
 " fzf
-nmap <leader>f :Files<cr>
+nmap <leader>f :GitFiles<cr>
+nmap <leader>F :Files<cr>
 nmap <leader>b :Buffers<cr>

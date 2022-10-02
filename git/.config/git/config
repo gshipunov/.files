@@ -1,31 +1,29 @@
 [user]
-	name = Grigory Shipunov
-	email = blame@oxapentane.com
-	signingkey = DD0998E6CDF294537FC604F991FA5E5BF9AA901C
+    name = Grigory Shipunov
+    email = blame@oxapentane.com
+    signingkey = DD0998E6CDF294537FC604F991FA5E5BF9AA901C
 [color]
-	ui = auto
+    ui = auto
 [merege]
-	conflictstyle = diff3
+    conflictstyle = diff3
 [commit]
-	gpgsign = true
+    gpgsign = true
 [credential]
-	helper = cache --timeout 28800
+    helper = cache --timeout 28800
 [alias]
-	diffs = diff --stat
-	diffstat = diff --stat
-	diffw = diff --word-diff=color
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     br = branch
     ci = commit
-    ciall = commit -a
-    ciam = commit --amend
+    ciA = commit --amend
+    cia = commit -a
     co = checkout
-    dic = diff --cached
-    dif = diff
+    d = diff
+    dc = diff --cached
+    ds = diff --stat
+    lg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     s = status
 [pull]
-	ff = only
+    ff = only
 [init]
-	defaultBranch = master
+    defaultBranch = master
 [safe]
-	directory = /etc/nixos
+    directory = /etc/nixos
