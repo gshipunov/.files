@@ -22,35 +22,26 @@ Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 
 " pretty bits
-Plug 'bluz71/vim-moonfly-colors'
-"Plug 'jeffkreeftmeijer/vim-dim'
-Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-Plug 'luochen1990/rainbow'
+Plug 'jeffkreeftmeijer/vim-dim'
 
-" navigating files
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf'
+" complete
+Plug 'Shougo/deoplete.nvim'
 
 call plug#end()
 
 " filetype magic
 autocmd BufRead,BufNewFile *.nasm set filetype=nasm
 
-" Theme
-set termguicolors
-let g:airline#extensions#tabline#enabled = 1
-set noshowmode " airline shows it for us
-let g:airline#extensions#tabline#buffer_min_count = 2
-let g:airline_theme = 'moonfly'
-colorscheme moonfly
+colorscheme dim
+" bug in neovim 0.8.0
+hi NormalFloat ctermfg=LightGrey
 
 " langmap russian
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 " Incrementally show effects of :s, :smagic, :snomagic
 set icm=split
-set signcolumn=yes
+"set signcolumn=yes
 
 " insert images into markdown automagically
 autocmd FileType markdown nmap <buffer><silent> <localleader>p :call mdip#MarkdownClipboardImage()<CR>
@@ -128,14 +119,9 @@ match RedundantSpaces /\s\+\%#\@<!$/
 " TeX
 let g:tex_conceal = ''
 
-" fzf
-nnoremap <leader>f <cmd>GFiles<cr>
-nnoremap <leader>g <cmd>Rg<cr>
-nnoremap <leader>b <cmd>Buffers<cr>
-nnoremap <leader>F <cmd>Files<cr>
-
 " highlight yanked text
 augroup highlight_yank
     autocmd!
     au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
 augroup END
+
