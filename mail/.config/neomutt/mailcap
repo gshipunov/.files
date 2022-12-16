@@ -1,6 +1,7 @@
 text/plain; $EDITOR %s ;
-text/html; w3m -I %{charset} -T text/html; copiousoutput;
-image/*; feh %s ;
+# text/html; w3m -I %{charset} -T text/html; copiousoutput;
+text/html; links -html-numbered-links 1 -html-images 1 -dump 'file://%s'; copiousoutput
+image/*; imv %s ;
 video/*; setsid mpv --quiet %s &; copiousoutput
 audio/*; mpv %s ;
 application/pdf; zathura %s ;
