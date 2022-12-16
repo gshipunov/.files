@@ -25,7 +25,7 @@ Plug 'preservim/vim-markdown'
 Plug 'jeffkreeftmeijer/vim-dim'
 
 " complete
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 

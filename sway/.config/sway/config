@@ -16,6 +16,7 @@ set $right l
 # Your preferred terminal emulator
 set $term foot
 set $floatterm foot --app-id floating-foot
+set $lock $HOME/.config/sway/lock.sh
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -39,9 +40,9 @@ output * bg ./wall.jpg fill
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 300 'swaylock -eFfk -i ~/.config/sway/wall.jpg -s fill' \
+         timeout 300 $lock \
          timeout 303 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -eFfk -i ~/.config/sway/wall.jpg -s fill'
+         before-sleep $lock
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -82,8 +83,8 @@ seat * hide_cursor 5000
     bindsym --to-code $mod+Shift+Return exec $floatterm
     for_window [app_id="floating-foot"] floating enable
 
-    # Start an editor
-    bindsym --to-code $mod+z exec emacsclient -a="" --create-frame
+    # Start a python shell
+    bindsym --to-code $mod+z exec $floatterm python
 
     # Kill focused window
     bindsym --to-code $mod+Shift+q kill
@@ -111,7 +112,8 @@ seat * hide_cursor 5000
     bindsym --to-code XF86AudioRaiseVolume exec 'pamixer -i 1'
     bindsym --to-code XF86AudioLowerVolume exec 'pamixer -d 1'
     bindsym --to-code XF86AudioMute exec 'pamixer -t'
-    bindsym --to-code $mod+Delete exec 'swaylock -eFfk -i ~/.config/sway/wall.jpg -s fill'
+    # bindsym --to-code $mod+Delete exec 'swaylock -eFfk -i ~/.config/sway/wall.jpg -s fill'
+    bindsym --to-code $mod+Delete exec $lock
     bindsym --to-code Print exec 'grim -g "$(slurp)" - | wl-copy'
     bindsym --to-code $mod+Print exec 'grim -g "$(slurp)" ~/Pictures/$(date +"%Y-%m-%d-%H-%M-%S").png'
     bindsym --to-code $mod+m exec 'makoctl dismiss -a'
@@ -238,7 +240,7 @@ mode "resize" {
 bindsym --to-code $mod+r mode "resize"
 
 ## Styling: colors
-include moonfly
+include colors
 
 ## Window styling
 #                       Border      BG          Text        Indicator   Child Border
@@ -273,7 +275,7 @@ font pango:JuliaMono 8
 exec nextcloud --background
 exec iwgtk -i
 exec blueman-applet
-exec wlsunset -l 51 -L 14
+#exec wlsunset -l 51 -L 14
 
 # window rules
 # floating
@@ -285,6 +287,13 @@ for_window [app_id="com.nextcloud.desktopclient.nextcloud"] floating enable; bor
 # tabbed containers
 for_window [app_id="CubicSDR"] layout tabbed
 for_window [app_id="org.wireshark.Wireshark"] layout tabbed
+
+for_window [app_id="zoom" title="^zoom$"] border none, floating enable
+# For specific Zoom windows
+for_window [app_id="zoom" title="^(Zoom|About)$"] border pixel, floating enable
+for_window [app_id="zoom" title="Settings"] floating enable, floating_minimum_size 960 x 700
+# Open Zoom Meeting windows on a new workspace (a bit hacky)
+for_window [app_id="zoom" title="Zoom Meeting(.*)?"] workspace next_on_output --create, move container to workspace current, floating disable, inhibit_idle open
 
 include ./config.d/*
 include /etc/sway/config.d/*

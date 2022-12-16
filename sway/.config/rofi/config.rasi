@@ -4,6 +4,5 @@ configuration {
     combi-modi: "drun,ssh";
     terminal: "foot";
 }
-//@theme "gruvbox-dark-soft"
-//@theme "/nix/store/m66hawy506lv8zpr9j6l9s46kgicvva9-rofi-1.7.5+wayland1/share/rofi/themes/Monokai.rasi"
-@theme "/nix/store/g2bj3ngb084x8mjxlix6bwzjy649wbbz-rofi-1.7.5+wayland1/share/rofi/themes/gruvbox-dark-soft.rasi"
+//@theme "DarkBlue"
+@theme "gruvbox-dark-hard"
