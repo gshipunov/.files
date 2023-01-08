@@ -70,7 +70,7 @@ exec swayidle -w \
 # Read `man 5 sway-input` for more information about this section.
 
 focus_follows_mouse yes
-mouse_warping container
+# mouse_warping container
 seat * hide_cursor 5000
 
 ### Key bindings
@@ -240,7 +240,8 @@ mode "resize" {
 bindsym --to-code $mod+r mode "resize"
 
 ## Styling: colors
-include colors
+#include colors
+include moonfly
 
 ## Window styling
 #                       Border      BG          Text        Indicator   Child Border
