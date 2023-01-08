@@ -1,5 +1,5 @@
 [theme]
-name = "foot"
+name = "moonfly"
 
 [icons]
 name = "awesome6"
@@ -7,7 +7,15 @@ name = "awesome6"
 [[block]]
 block = "maildir"
 interval = 60
-inboxes = ["/home/grue/mail/mail@oxapentane.com/INBOX", "/home/grue/mail/mail@oxapentane.com/sinkhole", "/home/grue/mail/dump@dvb.solutions/INBOX", "/home/grue/mail/grigory@shipunov.xyz/INBOX"]
+inboxes = ["/home/grue/mail/dump@dvb.solutions/INBOX", "/home/grue/mail/grigory@tlm.solutions/INBOX" ]
+threshold_critical = 1
+display_type = "new"
+on_click = "foot --app-id floating-foot --window-size-chars=150x50 -- zsh -c neomutt"
+
+[[block]]
+block = "maildir"
+interval = 60
+inboxes = ["/home/grue/mail/mail@oxapentane.com/INBOX", "/home/grue/mail/mail@oxapentane.com/sinkhole", "/home/grue/mail/grigory@shipunov.xyz/INBOX"]
 threshold_warning = 1
 threshold_critical = 10
 display_type = "new"
