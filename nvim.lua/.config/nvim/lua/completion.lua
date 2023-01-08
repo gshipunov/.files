@@ -1,10 +1,17 @@
 -- nvim cmp
 
-return require'cmp'.setup({
+-- setup completion menu
+vim.cmd([[
+set completeopt=menu,menuone,noselect
+]])
+
+-- setup cmp proper: pretty much default config
+local cmp = require'cmp'
+return cmp.setup({
     snippet = {
         expand = function(args)
             require'snippy'.expand_snippet(args.body)
-        end
+        end,
     },
 
     mapping = cmp.mapping.preset.insert({
@@ -12,7 +19,7 @@ return require'cmp'.setup({
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<Tab>'] = cmp.mapping.confirm({
+        ['<CR>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Insert,
             select = true,
         })

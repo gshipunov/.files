@@ -1,80 +1,86 @@
-require'plugins'
+-- set leader and locleader before setting any maps
+vim.g.mapleader = ' '
+vim.g.maplocalleader = '\\'
+
+-- set up packer and all the plugins
+require('plugins')
+
+-- old config still to luaify
+vim.cmd([[
+" filetype magic
+autocmd BufRead,BufNewFile *.nasm set filetype=nasm
+
+" langmap russian
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+
+" Incrementally show effects of :s, :smagic, :snomagic
+set icm=split
+"set signcolumn=yes
+
+set number
 
 
+set nobackup nowritebackup
+set noswapfile
 
--- LSP
--- nix
-if vim.fn.executable('rnix-lsp') == 1 then
-    require'lspconfig'.rnix.setup{
-        autostart = false,
-    }
-end
+" autosmartident
+set ai
+set si
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
 
--- Rust
-if vim.fn.executable('rust-analyzer') == 1 then
-    local rt = require'rust-tools'
+" arrows for visual line navigation
+imap <up> <C-O>gk
+imap <down> <C-O>gj
+nmap <up> gk
+nmap <down> gj
+vmap <up> gk
+vmap <down> gj
 
-    rt.setup({
-        tools = {
-            inlay_hints = {
-                auto = true,
-                only_current_line = true,
-            },
-        },
-        server = {
-            autostart = false,
-            on_attach = function(_, bufnr)
-                vim.keymap.set("n", "<Leader>h", rt.hover_actions.hover_actions, { buffer = bufnr })
-                vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-            end,
-        },
-        })
+set history=999
+set undolevels=999
 
+" Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+" Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
 
-end
+"set updatetime=107
 
+" disable modelines
+set nomodeline
 
--- require'completion'
-local cmp = require'cmp'
-cmp.setup({
-    snippet = {
-        expand = function(args)
-            require'snippy'.expand_snippet(args.body)
-        end
-    },
+" change tab completion to more bash-like
+set wildmode=longest:full,list:full
 
-    mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<Tab>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Insert,
-            select = true,
-        })
-    }),
+" U is quite useless
+nnoremap U :echo "NOPE!"<CR>
 
-    sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'snippy' }, -- For snippy users.
-        { name = 'buffer' },
-        { name = 'path' },
-        { name = 'nvim_lua' },
-    }),
+" help is quite annoying when you miss esc
+map <F1> <Esc>
+imap <F1> <Esc>
 
-    formatting = {
-        format = function(entry, vim_item)
-            vim_item.kind = string.format('%s', vim_item.kind)
-            vim_item.menu = ({
-                nvim_lsp = '[LSP]',
-                buffer = '[B]',
-                path = '[F]',
-                snippy = '[S]',
-                nvim_lua = '[vim]',
-            })[entry.source.name]
+" do not conceal stuff
+set conceallevel=0
+set foldlevel=999
 
-            return vim_item
-        end,
-    }
-})
+" Whitespace highlight
+highlight RedundantSpaces ctermbg=red guibg=red
+match RedundantSpaces /\s\+\%#\@<!$/
+
+" highlight yanked text
+augroup highlight_yank
+autocmd!
+au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
+augroup END
+
+]])
 
