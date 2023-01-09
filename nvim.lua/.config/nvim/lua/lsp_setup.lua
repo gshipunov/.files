@@ -49,7 +49,7 @@ vim.cmd([[set signcolumn=yes]])
 
 -- Setting up servers per language
 -- Nix
-nvim_lsp['rnix'].setup{
+nvim_lsp['nil_ls'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,

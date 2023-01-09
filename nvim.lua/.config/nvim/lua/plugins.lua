@@ -67,6 +67,7 @@ return require('packer').startup(function(use)
 
     -- Nifty stuff
     use 'tpope/vim-surround'
+    use 'airblade/vim-rooter'
     use {
         'ibhagwan/fzf-lua',
         config = setup_fzf(),
