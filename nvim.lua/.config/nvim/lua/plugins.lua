@@ -51,12 +51,15 @@ return require('packer').startup(function(use)
     -- pretty bits
     use {
         'bluz71/vim-moonfly-colors',
-        config = vim.cmd([[ set termguicolors
-                            colorscheme moonfly ]]),
+        config = function()
+            vim.cmd([[ set termguicolors
+            colorscheme moonfly ]])
+        end,
     }
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+	after = { 'vim-moonfly-colors' },
         config = function()
             require('lualine_setup')
         end,
@@ -64,6 +67,13 @@ return require('packer').startup(function(use)
 
     -- Git
     use 'tpope/vim-fugitive'
+    use {
+        'lewis6991/gitsigns.nvim',
+        tag = 'release',
+        config = function()
+            require('gitsigns').setup()
+        end,
+    }
 
     -- Nifty stuff
     use 'tpope/vim-surround'
