@@ -11,7 +11,7 @@ end
 
 local setup_fzf = function()
     vim.api.nvim_set_keymap('n', '<c-P>', "<cmd>lua require('fzf-lua').files()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<leader>f', "<cmd>lua require('fzf-lua').git_files()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>g', "<cmd>lua require('fzf-lua').git_files()<CR>", { noremap = true, silent = true })
     vim.api.nvim_set_keymap('n', '<leader>b', "<cmd>lua require('fzf-lua').buffers()<CR>", { noremap = true, silent = true })
 end
 
