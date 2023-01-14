@@ -52,13 +52,11 @@ exec swayidle -w \
 #
 # Example configuration:
 #
-  input "10248:257:FTCS1000:00_2808:0101_Touchpad" {
+  input "1739:52840:SYNA8019:00_06CB:CE68_Touchpad" {
       accel_profile adaptive
       click_method clickfinger
       dwt enabled
       middle_emulation enabled
-      natural_scroll enabled
-      tap enabled
   }
 
   input * {
