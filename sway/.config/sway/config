@@ -110,12 +110,16 @@ seat * hide_cursor 5000
     bindsym --to-code XF86AudioRaiseVolume exec 'pamixer -i 1'
     bindsym --to-code XF86AudioLowerVolume exec 'pamixer -d 1'
     bindsym --to-code XF86AudioMute exec 'pamixer -t'
-    # bindsym --to-code $mod+Delete exec 'swaylock -eFfk -i ~/.config/sway/wall.jpg -s fill'
+    # Screen locking
     bindsym --to-code $mod+Delete exec $lock
+    # Screenshots
     bindsym --to-code Print exec 'grim -g "$(slurp)" - | wl-copy'
     bindsym --to-code $mod+Print exec 'grim -g "$(slurp)" ~/Pictures/$(date +"%Y-%m-%d-%H-%M-%S").png'
+    # Notifications
     bindsym --to-code $mod+m exec 'makoctl dismiss -a'
     bindsym --to-code $mod+Shift+m exec 'makoctl restore'
+    # Check mail
+    bindsym --to-code $mod+n exec 'systemctl --user start mbsync.service'
 
 
 #
@@ -293,6 +297,7 @@ for_window [app_id="zoom" title="^(Zoom|About)$"] border pixel, floating enable
 for_window [app_id="zoom" title="Settings"] floating enable, floating_minimum_size 960 x 700
 # Open Zoom Meeting windows on a new workspace (a bit hacky)
 for_window [app_id="zoom" title="Zoom Meeting(.*)?"] workspace next_on_output --create, move container to workspace current, floating disable, inhibit_idle open
+for_window [app_id="firefox" title="Firefox — Sharing Indicator"] kill
 
 include ./config.d/*
 include /etc/sway/config.d/*
