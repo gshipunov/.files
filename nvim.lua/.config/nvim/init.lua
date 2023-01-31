@@ -15,10 +15,8 @@ set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNO
 
 " Incrementally show effects of :s, :smagic, :snomagic
 set icm=split
-"set signcolumn=yes
 
 set number
-
 
 set nobackup nowritebackup
 set noswapfile

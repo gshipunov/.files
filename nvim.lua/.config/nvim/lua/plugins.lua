@@ -80,7 +80,6 @@ return require('packer').startup(function(use)
     use 'tpope/vim-fugitive'
     use {
         'lewis6991/gitsigns.nvim',
-        tag = 'release',
         config = function()
             require('gitsigns').setup()
         end,
@@ -115,11 +114,6 @@ return require('packer').startup(function(use)
     -- neovim VSCode edition
     use {
         'neovim/nvim-lspconfig',
-        ft = {
-            'rust',
-            'nix',
-            -- 'python',
-        },
         after = { 'nvim-cmp' },
         requires = { 'simrat39/rust-tools.nvim' },
         config = function()

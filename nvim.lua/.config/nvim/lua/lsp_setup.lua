@@ -48,12 +48,16 @@ local lsp_flags = {
 vim.cmd([[set signcolumn=yes]])
 
 -- Setting up servers per language
--- Nix
-nvim_lsp['nil_ls'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-}
+-- Default nvim-lsp setup: nil, clangd
+local servers = { 'nil_ls', 'clangd' }
+
+for _, serv in ipairs(servers) do
+    nvim_lsp[serv].setup{
+        on_attach = on_attach,
+        flags = lsp_flags,
+        capabilities = capabilities,
+    }
+end
 
 -- Rust: using rust tools package
 local rt = require("rust-tools")
