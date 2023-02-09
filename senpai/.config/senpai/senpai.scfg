@@ -1,0 +1,3 @@
+address mrbouncy.oxapentane.com:7000
+nickname oxapentane/*
+password-cmd  cat /run/secrets/irc/senpai
