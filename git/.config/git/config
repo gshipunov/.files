@@ -27,3 +27,7 @@
     defaultBranch = master
 [safe]
     directory = /etc/nixos
+[sendemail]
+    smtpserver = /run/current-system/sw/bin/msmtpq
+    smtpserveroption = --read-envelope-from
+    annotate = yes
