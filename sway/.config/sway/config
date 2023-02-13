@@ -52,15 +52,16 @@ exec swayidle -w \
 #
 # Example configuration:
 #
-  input "1739:52840:SYNA8019:00_06CB:CE68_Touchpad" {
+  input type:touchpad {
       accel_profile adaptive
       click_method clickfinger
       dwt enabled
+      dwtp enabled
       middle_emulation enabled
   }
 
-  input * {
-      xkb_layout "us,ru"
+  input type:keyboard {
+      xkb_layout "65-percent-en-us,ru"
       xkb_options "caps:ctrl_modifier,grp:alt_space_toggle"
   }
 #
@@ -114,7 +115,9 @@ seat * hide_cursor 5000
     bindsym --to-code $mod+Delete exec $lock
     # Screenshots
     bindsym --to-code Print exec 'grim -g "$(slurp)" - | wl-copy'
+    bindsym --to-code $mod+p exec 'grim -g "$(slurp)" - | wl-copy'
     bindsym --to-code $mod+Print exec 'grim -g "$(slurp)" ~/Pictures/$(date +"%Y-%m-%d-%H-%M-%S").png'
+    bindsym --to-code $mod+Mod1+p exec 'grim -g "$(slurp)" ~/Pictures/$(date +"%Y-%m-%d-%H-%M-%S").png'
     # Notifications
     bindsym --to-code $mod+m exec 'makoctl dismiss -a'
     bindsym --to-code $mod+Shift+m exec 'makoctl restore'
@@ -296,11 +299,13 @@ default_border pixel 2
 # Set font
 font pango:JuliaMono 8
 
+# bindsym --to-code $mod+t input type:touchpad toggle
+
 # Startup applications
 exec nextcloud --background
 exec iwgtk -i
 exec blueman-applet
-#exec wlsunset -l 51 -L 14
+exec wlsunset -l 52 -L 5
 
 # window rules
 # floating
@@ -319,7 +324,10 @@ for_window [app_id="zoom" title="^(Zoom|About)$"] border pixel, floating enable
 for_window [app_id="zoom" title="Settings"] floating enable, floating_minimum_size 960 x 700
 # Open Zoom Meeting windows on a new workspace (a bit hacky)
 for_window [app_id="zoom" title="Zoom Meeting(.*)?"] workspace next_on_output --create, move container to workspace current, floating disable, inhibit_idle open
+# kill firefox sharing indicator
 for_window [app_id="firefox" title="Firefox — Sharing Indicator"] kill
+# fix picture-in-picture behaviour
+for_window [app_id="firefox" title="Picture-in-Picture"] floating enable, sticky enable, border none
 
 include ./config.d/*
 include /etc/sway/config.d/*

@@ -59,9 +59,6 @@ headphones_indicator = true
 block = "keyboard_layout"
 driver = "sway"
 format = "{layout}"
-[block.mappings]
-"English (US)" = "UWU"
-"Russian (N/A)" = "ЪУЪ"
 
 [[block]]
 block = "battery"
