@@ -4,7 +4,6 @@ set realname = "Grigory Shipunov"
 set from = "mail@oxapentane.com"
 alternates "@oxapentane\.com$"
 set reverse_name
-set sendmail = "msmtp -a mail@oxapentane.com"
 alias me 0xA <mail@oxapentane.com>
 set folder = "~/mail/mail@oxapentane.com"
 set header_cache = "~/.cache/mutt-cache/mail@oxapentane.com/headers"

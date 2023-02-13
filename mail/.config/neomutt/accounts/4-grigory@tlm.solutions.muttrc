@@ -1,6 +1,5 @@
 set realname = "Grigory Shipunov"
 set from = "grigory@tlm.solutions"
-set sendmail = "msmtp -a grigory@tlm.solutions"
 alias me <grigory@tlm.solutions>
 set folder = "~/mail/grigory@tlm.solutions"
 set header_cache = "~/.cache/mutt-cache/grigory_tlm.solutions/headers"

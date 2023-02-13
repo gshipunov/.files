@@ -2,7 +2,6 @@
 # muttrc file for account grigory@shipunov.xyz
 set realname = "Grigory Shipunov"
 set from = "grigory@shipunov.xyz"
-set sendmail = "msmtp -a grigory@shipunov.xyz"
 alias me Grigory Shipunov <grigory@shipunov.xyz>
 set folder = "~/mail/grigory@shipunov.xyz"
 set header_cache = "~/.cache/mutt-cache/grigory@shipunov.xyz/headers"

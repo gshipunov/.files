@@ -2,7 +2,6 @@
 # muttrc file for account dump@dvb.solutions
 set realname = "dump"
 set from = "dump@dvb.solutions"
-set sendmail = "msmtp -a dump@dvb.solutions"
 alias me dump <dump@dvb.solutions>
 set folder = "~/mail/dump@dvb.solutions"
 set header_cache = "~/.cache/mutt-cache/dump@dvb.solutions/headers"

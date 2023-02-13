@@ -1,4 +1,8 @@
 set mailcap_path = ~/.config/neomutt/mailcap:$mailcap_path
+
+set sendmail = "msmtpq --read-envelope-from"
+set sendmail_wait = -1
+
 set mime_type_query_command = "file --mime-type -b %s"
 set date_format="%y-%m-%d %H:%M"
 set index_format="%2C %Z %?X?A& ? %D %-25.25F %s (%-4.4c)"
