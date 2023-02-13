@@ -41,7 +41,7 @@ return require('packer').startup(function(use)
         'lervag/vimtex',
         ft = { 'tex' },
         -- do not conceal stuff
-        config = vim.cmd([[ let g:tex_conceal = '' ]]),
+        config = function() vim.cmd([[ let g:tex_conceal = '' ]]) end,
     }
     use 'lepture/vim-jinja'
     use 'neomutt/neomutt.vim'
@@ -70,7 +70,7 @@ return require('packer').startup(function(use)
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-	after = { 'vim-moonfly-colors' },
+        after = { 'vim-moonfly-colors' },
         config = function()
             require('lualine_setup')
         end,
@@ -93,23 +93,41 @@ return require('packer').startup(function(use)
         config = setup_fzf(),
     }
 
-     -- completion
-     use {
-         'hrsh7th/nvim-cmp',
-         requires = {
-             -- completion sources
-             'hrsh7th/cmp-nvim-lsp',
-             'hrsh7th/cmp-buffer',
-             'hrsh7th/cmp-path',
-             'hrsh7th/cmp-nvim-lua',
-             -- snippets (hard requirement by cmp)
-             'dcampos/nvim-snippy',
-             'dcampos/cmp-snippy'
-         },
-         config = function()
-             require('completion')
-         end,
-     }
+    -- completion
+    use {
+        'hrsh7th/nvim-cmp',
+        requires = {
+            -- completion sources
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-nvim-lua',
+            'dcampos/nvim-snippy',
+            'dcampos/cmp-snippy'
+        },
+        config = function()
+            require('completion')
+        end,
+    }
+
+    use {
+        'dcampos/nvim-snippy',
+        config = function()
+            require'snippy'.setup({
+                mappings = {
+                    is = {
+                        ['<Tab>'] = 'expand_or_advance',
+                        ['<S-Tab>'] = 'previous',
+                    },
+                    nx = {
+                        ['<leader>x'] = 'cut_text',
+                    },
+                },
+            })
+        end,
+    }
+    use 'dcampos/cmp-snippy'
+    use 'honza/vim-snippets'
 
     -- neovim VSCode edition
     use {

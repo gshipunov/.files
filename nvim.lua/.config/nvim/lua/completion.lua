@@ -1,5 +1,3 @@
--- nvim cmp
-
 -- setup completion menu
 vim.cmd([[
 set completeopt=menu,menuone,noselect
@@ -7,7 +5,8 @@ set completeopt=menu,menuone,noselect
 
 -- setup cmp proper: pretty much default config
 local cmp = require'cmp'
-return cmp.setup({
+
+cmp.setup({
     snippet = {
         expand = function(args)
             require'snippy'.expand_snippet(args.body)
@@ -48,4 +47,3 @@ return cmp.setup({
         end,
     }
 })
-
