@@ -14,8 +14,8 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
-set $floatterm foot --app-id floating-foot
+set $term alacritty
+set $floatterm alacritty --class floating-foot
 set $lock $HOME/.config/sway/lock.sh
 
 # Your preferred application launcher

@@ -10,7 +10,7 @@ interval = 60
 inboxes = ["/home/grue/mail/dump@dvb.solutions/INBOX", "/home/grue/mail/grigory@tlm.solutions/INBOX" ]
 threshold_critical = 1
 display_type = "new"
-on_click = "foot --app-id floating-foot --window-size-chars=150x50 -- zsh -c neomutt"
+on_click = "alacritty --class floating-foot -o \"window.dimensions.columns=150\" -o \"window.dimensions.rows=50\" -e zsh -c neomutt"
 
 [[block]]
 block = "maildir"
@@ -19,7 +19,7 @@ inboxes = ["/home/grue/mail/mail@oxapentane.com/INBOX", "/home/grue/mail/mail@ox
 threshold_warning = 1
 threshold_critical = 10
 display_type = "new"
-on_click = "foot --app-id floating-foot --window-size-chars=150x50 -- zsh -c neomutt"
+on_click = "alacritty --class floating-foot -o \"window.dimensions.columns=150\" -o \"window.dimensions.rows=50\" -e zsh -c neomutt"
 
 [[block]]
 block = "backlight"
@@ -52,7 +52,7 @@ format = "{1m} {5m} {15m}"
 
 [[block]]
 block = "sound"
-on_click = "foot --app-id floating-foot -- zsh -c pulsemixer"
+on_click = "alacritty --class floating-foot -e zsh -c pulsemixer"
 headphones_indicator = true
 
 [[block]]
