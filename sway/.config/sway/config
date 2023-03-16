@@ -15,7 +15,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term alacritty
-set $floatterm alacritty --class floating-foot
+set $floatterm alacritty --class floating-foot -e
 set $lock $HOME/.config/sway/lock.sh
 
 # Your preferred application launcher
@@ -61,7 +61,7 @@ exec swayidle -w \
   }
 
   input type:keyboard {
-      xkb_layout "65-percent-en-us,ru"
+      xkb_layout "us,ru"
       xkb_options "caps:ctrl_modifier,grp:alt_space_toggle"
   }
 #
@@ -105,8 +105,8 @@ seat * hide_cursor 5000
     bindsym --to-code $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
     # Brightness
-    bindsym --to-code XF86MonBrightnessDown exec "brightnessctl set 1%-"
-    bindsym --to-code XF86MonBrightnessUp exec "brightnessctl set +1%"
+    bindsym --to-code XF86MonBrightnessDown exec "brightnessctl set 5%-"
+    bindsym --to-code XF86MonBrightnessUp exec "brightnessctl set +5%"
     # Volume
     bindsym --to-code XF86AudioRaiseVolume exec 'pamixer -i 1'
     bindsym --to-code XF86AudioLowerVolume exec 'pamixer -d 1'
@@ -281,7 +281,7 @@ client.focused          $color06    $color06    $color00    $color07    $color06
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
-    font pango:JuliaMono, Font Awesome 6 Free 8
+    font pango:Iosevka Regular 9
     icon_theme "Adwaita"
     status_command /run/current-system/sw/bin/i3status-rs
     colors {
@@ -297,7 +297,7 @@ bar {
 # default border
 default_border pixel 2
 # Set font
-font pango:JuliaMono 8
+font pango:Iosevka Regular 9
 
 # bindsym --to-code $mod+t input type:touchpad toggle
 

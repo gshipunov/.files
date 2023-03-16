@@ -1,17 +1,13 @@
 font:
-  size: 9 # whatever this number actually means...
+  size: 10 # whatever this number actually means...
   normal:
-    family: JuliaMono
-    style: Regular
+    family: Iosevka
   bold:
-    family: JuliaMono
-    style: Bold
+    family: Iosevka
   italic:
-    family: JuliaMono
-    style: Italic
+    family: Iosevka
   bold_italic:
-    family: JuliaMono
-    style: BoldItalic
+    family: Iosevka
   
 
 #draw_bold_text_with_bright_colors: true

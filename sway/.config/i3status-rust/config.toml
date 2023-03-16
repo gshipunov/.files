@@ -1,8 +1,8 @@
 [theme]
-name = "moonfly"
+theme = "moonfly"
 
 [icons]
-name = "awesome6"
+icons = "awesome6"
 
 [[block]]
 block = "maildir"
@@ -10,7 +10,9 @@ interval = 60
 inboxes = ["/home/grue/mail/dump@dvb.solutions/INBOX", "/home/grue/mail/grigory@tlm.solutions/INBOX" ]
 threshold_critical = 1
 display_type = "new"
-on_click = "alacritty --class floating-foot -o \"window.dimensions.columns=150\" -o \"window.dimensions.rows=50\" -e zsh -c neomutt"
+[[block.click]]
+button = "left"
+cmd = "alacritty --class floating-foot -o \"window.dimensions.columns=150\" -o \"window.dimensions.lines=50\" -e zsh -c neomutt"
 
 [[block]]
 block = "maildir"
@@ -19,7 +21,9 @@ inboxes = ["/home/grue/mail/mail@oxapentane.com/INBOX", "/home/grue/mail/mail@ox
 threshold_warning = 1
 threshold_critical = 10
 display_type = "new"
-on_click = "alacritty --class floating-foot -o \"window.dimensions.columns=150\" -o \"window.dimensions.rows=50\" -e zsh -c neomutt"
+[[block.click]]
+button = "left"
+cmd = "alacritty --class floating-foot -o \"window.dimensions.columns=150\" -o \"window.dimensions.lines=50\" -e zsh -c neomutt"
 
 [[block]]
 block = "backlight"
@@ -30,42 +34,41 @@ cycle = [ 100, 50, 10 ]
 [[block]]
 block = "net"
 device = "wlan0"
-format = "{ssid} {signal_strength}"
+format = " $icon $ssid $signal_strength "
 
 [[block]]
 block = "net"
-device = "james"
+device = "enp1s0f0"
 
 [[block]]
 block = "memory"
-display_type = "memory"
-format_mem = "{mem_used_percents}"
-format_swap = "{swap_used_percents}"
+format = " $icon $mem_used_percents "
 
 [[block]]
 block = "cpu"
-format = "{frequency} {barchart} {utilization}"
+format = " $icon $frequency $barchart "#  $utilization"
 
 [[block]]
 block = "load"
-format = "{1m} {5m} {15m}"
+format = " $1m $5m $15m "
 
 [[block]]
 block = "sound"
-on_click = "alacritty --class floating-foot -e zsh -c pulsemixer"
 headphones_indicator = true
+[[block.click]]
+button = "left"
+cmd = "alacritty --class floating-foot -e zsh -c pulsemixer"
 
 [[block]]
 block = "keyboard_layout"
 driver = "sway"
-format = "{layout}"
 
 [[block]]
 block = "battery"
 driver = "upower"
-format = "{percentage} {time}"
+format = " $icon $percentage $time "
 if_command = "test -e /sys/class/power_supply/BAT0"
 
 [[block]]
 block = "time"
-format = "%a %F %R"
+format = " $icon $timestamp.datetime(f:'%a %F %R', l:nl_NL) "
