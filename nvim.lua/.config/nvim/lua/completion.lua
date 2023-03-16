@@ -7,6 +7,10 @@ set completeopt=menu,menuone,noselect
 local cmp = require'cmp'
 
 cmp.setup({
+    window = {
+        completion = cmp.config.window.bordered(winhighlight),
+        documentation = cmp.config.window.bordered(winhighlight),
+    },
     snippet = {
         expand = function(args)
             require'snippy'.expand_snippet(args.body)

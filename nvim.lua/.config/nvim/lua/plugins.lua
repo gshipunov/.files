@@ -64,8 +64,20 @@ return require('packer').startup(function(use)
         'bluz71/vim-moonfly-colors',
         config = function()
             vim.cmd([[ set termguicolors
-            colorscheme moonfly ]])
+            colorscheme moonfly
+            ]])
         end,
+    }
+    use {
+        'johnfrankmorgan/whitespace.nvim',
+        config = function ()
+            require('whitespace-nvim').setup({
+                ignored_filetypes = { 'TelescopePrompt', 'Trouble', 'help' },
+            })
+
+            -- remove trailing whitespace with a keybinding
+            vim.keymap.set('n', '<Leader>t', require('whitespace-nvim').trim)
+        end
     }
     use {
         'nvim-lualine/lualine.nvim',
@@ -88,10 +100,30 @@ return require('packer').startup(function(use)
     -- Nifty stuff
     use 'tpope/vim-surround'
     use 'airblade/vim-rooter'
+    -- use {
+    --     'ibhagwan/fzf-lua',
+    --     config = setup_fzf(),
+    -- }
     use {
-        'ibhagwan/fzf-lua',
-        config = setup_fzf(),
+        'nvim-telescope/telescope.nvim',
+        branch = '0.1.x',
+        requires = { { 'nvim-lua/plenary.nvim' } },
+        config = function()
+            require('telescope').setup{
+                pickers = {
+                    find_files = {
+                        theme = "dropdown",
+                    }
+                }
+            }
+            local builtin = require('telescope.builtin')
+            vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+            vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+            vim.keymap.set('n', '<leader>b', builtin.buffers, {})
+            vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+        end,
     }
+
 
     -- completion
     use {

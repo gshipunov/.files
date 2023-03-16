@@ -47,6 +47,19 @@ local lsp_flags = {
 -- always show sign column
 vim.cmd([[set signcolumn=yes]])
 
+vim.g.moonflyNormalFloat = true
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+    vim.lsp.handlers.hover, {
+        border = "single"
+    }
+)
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+    vim.lsp.handlers.signatureHelp, {
+        border = "single"
+    }
+)
+vim.diagnostic.config({ float = { border = "single" } })
+
 -- Setting up servers per language
 -- Default nvim-lsp setup: nil, clangd
 local servers = { 'nil_ls', 'clangd' }
@@ -66,5 +79,12 @@ rt.setup({
         on_attach = on_attach,
         flags = lsp_flags,
         capabilities = capabilities,
+        settings = {
+            ["rust-analyzer"] = {
+                cargo = {
+                    allFeatures = true,
+                },
+            },
+        },
     },
 })
