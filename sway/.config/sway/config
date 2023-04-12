@@ -306,6 +306,7 @@ exec nextcloud --background
 exec iwgtk -i
 exec blueman-applet
 exec wlsunset -l 52 -L 5
+exec kanshi
 
 # window rules
 # floating
