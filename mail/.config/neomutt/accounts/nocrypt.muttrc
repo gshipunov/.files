@@ -1,9 +1,0 @@
-# Encryption boilerplate
-set postpone_encrypt = no
-set pgp_self_encrypt = no
-set crypt_use_pka = no
-set crypt_autosign = no
-set crypt_autoencrypt = no
-set crypt_autopgp = no
-set crypt_replyencrypt = no
-set crypt_replysign = no

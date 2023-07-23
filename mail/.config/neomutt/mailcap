@@ -1,9 +1,0 @@
-text/plain; $EDITOR %s ;
-# text/html; w3m -I %{charset} -T text/html; copiousoutput;
-text/html; links -html-numbered-links 1 -html-images 1 -dump 'file://%s'; copiousoutput
-image/*; imv %s ;
-video/*; setsid mpv --quiet %s &; copiousoutput
-audio/*; mpv %s ;
-application/pdf; evince %s ;
-application/pgp-encrypted; gpg -d '%s'; copiousoutput;
-application/pgp-keys; gpg --import '%s'; copiousoutput;
