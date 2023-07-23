@@ -1,7 +1,7 @@
 local ts_conf = require('nvim-treesitter.configs')
 
 ts_conf.setup {
-    ensure_installed =  "all",
+    ensure_installed = { "vim", "vimdoc", "rust", "nix", "latex" },
     highlight = {
         enable = true,
     },

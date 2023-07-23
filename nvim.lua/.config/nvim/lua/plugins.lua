@@ -41,7 +41,10 @@ return require('packer').startup(function(use)
         'lervag/vimtex',
         ft = { 'tex' },
         -- do not conceal stuff
-        config = function() vim.cmd([[ let g:tex_conceal = '' ]]) end,
+        config = function() vim.cmd([[
+            let g:tex_conceal = ''
+            autocmd FileType tex nnoremap <localleader>= :VimtexTocToggle<CR>
+        ]]) end,
     }
     use 'lepture/vim-jinja'
     use 'neomutt/neomutt.vim'
@@ -60,11 +63,30 @@ return require('packer').startup(function(use)
     }
 
     -- pretty bits
+    -- use {
+    --     '/home/grue/projects/zen-footburn.nvim',
+    --     config = function()
+    --         vim.cmd([[
+    --         set termguicolors
+    --         colorscheme zenburn
+    --         ]])
+    --     end,
+    -- }
+    -- use {
+    --     'sainnhe/everforest',
+    --     config = function()
+    --         vim.cmd([[
+    --         set termguicolors
+    --         let g:everforest_transparent_background = 2
+    --         colorscheme everforest
+    --         ]])
+    --     end,
+    -- }
     use {
-        'bluz71/vim-moonfly-colors',
+        'jeffkreeftmeijer/vim-dim',
         config = function()
-            vim.cmd([[ set termguicolors
-            colorscheme moonfly
+            vim.cmd([[
+            colorscheme dim
             ]])
         end,
     }
@@ -79,97 +101,104 @@ return require('packer').startup(function(use)
             vim.keymap.set('n', '<Leader>t', require('whitespace-nvim').trim)
         end
     }
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-        after = { 'vim-moonfly-colors' },
-        config = function()
-            require('lualine_setup')
-        end,
-    }
+    -- use {
+    --     'nvim-lualine/lualine.nvim',
+    --     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    --     after = { 'zen-footburn.nvim' },
+    --     config = function()
+    --         -- this now handled by the lualine
+    --         vim.cmd([[set noshowmode]])
+
+    --         return require('lualine').setup {
+    --             options = {
+    --                 icons_enabled = true,
+    --                 theme = 'zenburn',
+    --                 -- section_separators = '',
+    --                 -- component_seaparators = '',
+    --             }
+    --         }
+    --     end,
+    -- }
 
     -- Git
     use 'tpope/vim-fugitive'
     use {
         'lewis6991/gitsigns.nvim',
         config = function()
+            vim.cmd([[set signcolumn=yes]])
             require('gitsigns').setup()
         end,
     }
 
     -- Nifty stuff
     use 'tpope/vim-surround'
-    use 'airblade/vim-rooter'
+    -- use 'airblade/vim-rooter'
     -- use {
-    --     'ibhagwan/fzf-lua',
-    --     config = setup_fzf(),
+    --     'nvim-telescope/telescope.nvim',
+    --     branch = '0.1.x',
+    --     requires = { { 'nvim-lua/plenary.nvim' } },
+    --     config = function()
+    --         require('telescope').setup{
+    --             pickers = {
+    --                 find_files = {
+    --                     theme = "dropdown",
+    --                 }
+    --             }
+    --         }
+    --         local builtin = require('telescope.builtin')
+    --         vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+    --         vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+    --         vim.keymap.set('n', '<leader>b', builtin.buffers, {})
+    --         vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+    --     end,
     -- }
-    use {
-        'nvim-telescope/telescope.nvim',
-        branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' } },
-        config = function()
-            require('telescope').setup{
-                pickers = {
-                    find_files = {
-                        theme = "dropdown",
-                    }
-                }
-            }
-            local builtin = require('telescope.builtin')
-            vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-            vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-            vim.keymap.set('n', '<leader>b', builtin.buffers, {})
-            vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-        end,
-    }
 
 
     -- completion
-    use {
-        'hrsh7th/nvim-cmp',
-        requires = {
-            -- completion sources
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-nvim-lua',
-            'dcampos/nvim-snippy',
-            'dcampos/cmp-snippy'
-        },
-        config = function()
-            require('completion')
-        end,
-    }
+    -- use {
+    --     'hrsh7th/nvim-cmp',
+    --     requires = {
+    --         -- completion sources
+    --         'hrsh7th/cmp-nvim-lsp',
+    --         'hrsh7th/cmp-buffer',
+    --         'hrsh7th/cmp-path',
+    --         'hrsh7th/cmp-nvim-lua',
+    --         'dcampos/nvim-snippy',
+    --         'dcampos/cmp-snippy'
+    --     },
+    --     config = function()
+    --         require('completion')
+    --     end,
+    -- }
 
-    use {
-        'dcampos/nvim-snippy',
-        config = function()
-            require'snippy'.setup({
-                mappings = {
-                    is = {
-                        ['<Tab>'] = 'expand_or_advance',
-                        ['<S-Tab>'] = 'previous',
-                    },
-                    nx = {
-                        ['<leader>x'] = 'cut_text',
-                    },
-                },
-            })
-        end,
-    }
-    use 'dcampos/cmp-snippy'
-    use 'honza/vim-snippets'
+    -- use {
+    --     'dcampos/nvim-snippy',
+    --     config = function()
+    --         require'snippy'.setup({
+    --             mappings = {
+    --                 is = {
+    --                     ['<Tab>'] = 'expand_or_advance',
+    --                     ['<S-Tab>'] = 'previous',
+    --                 },
+    --                 nx = {
+    --                     ['<leader>x'] = 'cut_text',
+    --                 },
+    --             },
+    --         })
+    --     end,
+    -- }
+    -- use 'dcampos/cmp-snippy'
+    -- use 'honza/vim-snippets'
 
     -- neovim VSCode edition
-    use {
-        'neovim/nvim-lspconfig',
-        after = { 'nvim-cmp' },
-        requires = { 'simrat39/rust-tools.nvim' },
-        config = function()
-            require'lsp_setup'
-        end,
-    }
+    -- use {
+    --     'neovim/nvim-lspconfig',
+    --     after = { 'nvim-cmp' },
+    --     requires = { 'simrat39/rust-tools.nvim' },
+    --     config = function()
+    --         require'lsp_setup'
+    --     end,
+    -- }
 
     use {
         'jamessan/vim-gnupg',

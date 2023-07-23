@@ -13,6 +13,7 @@ warning_fg = "#111111"
 critical_bg = "#fcace3"
 critical_fg = "#111111"
 
-separator = "/"
+separator = "░"
+# separator = "█"
 separator_fg = "#ffffff"
 separator_bg = "#111111"

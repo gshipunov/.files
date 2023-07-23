@@ -1,0 +1,15 @@
+idle_bg = "#2d353b"
+idle_fg = "#d3c6aa"
+
+good_fg = "#a7c080"
+
+info_fg = "#dbbc7f"
+
+warning_fg = "#e69875"
+
+critical_bg = "#e67e80"
+critical_fg = "#d3c6aa"
+
+separator = "/"
+separator_fg = "#d3c6aa"
+separator_bg = "#2d353b"

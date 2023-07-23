@@ -4,6 +4,6 @@ text/html; links -html-numbered-links 1 -html-images 1 -dump 'file://%s'; copiou
 image/*; imv %s ;
 video/*; setsid mpv --quiet %s &; copiousoutput
 audio/*; mpv %s ;
-application/pdf; zathura %s ;
+application/pdf; evince %s ;
 application/pgp-encrypted; gpg -d '%s'; copiousoutput;
 application/pgp-keys; gpg --import '%s'; copiousoutput;

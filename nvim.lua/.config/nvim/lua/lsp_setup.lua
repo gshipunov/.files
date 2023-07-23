@@ -62,7 +62,7 @@ vim.diagnostic.config({ float = { border = "single" } })
 
 -- Setting up servers per language
 -- Default nvim-lsp setup: nil, clangd
-local servers = { 'nil_ls', 'clangd' }
+local servers = { 'nil_ls', 'clangd', 'texlab' }
 
 for _, serv in ipairs(servers) do
     nvim_lsp[serv].setup{

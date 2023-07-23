@@ -1,8 +1,15 @@
 [theme]
-theme = "moonfly"
+theme = "foot"
 
 [icons]
 icons = "awesome6"
+
+[[block]]
+block = "time"
+format = " $icon $timestamp.datetime(f:'%a %F %R', l:nl_NL) "
+[block.theme_overrides]
+idle_bg = { link = "idle_fg" }
+idle_fg = { link = "idle_bg" }
 
 [[block]]
 block = "maildir"
@@ -12,7 +19,7 @@ threshold_critical = 1
 display_type = "new"
 [[block.click]]
 button = "left"
-cmd = "alacritty --class floating-foot -o \"window.dimensions.columns=150\" -o \"window.dimensions.lines=50\" -e zsh -c neomutt"
+cmd = "foot --app-id floating-foot --window-size-chars=150x50 -- zsh -c neomutt"
 
 [[block]]
 block = "maildir"
@@ -23,7 +30,7 @@ threshold_critical = 10
 display_type = "new"
 [[block.click]]
 button = "left"
-cmd = "alacritty --class floating-foot -o \"window.dimensions.columns=150\" -o \"window.dimensions.lines=50\" -e zsh -c neomutt"
+cmd = "foot --app-id floating-foot --window-size-chars=150x50 -- zsh -c neomutt"
 
 [[block]]
 block = "backlight"
@@ -61,11 +68,21 @@ block = "load"
 format = " $1m.eng(w:4) $5m.eng(w:4) $15m.eng(w:4) "
 
 [[block]]
+block = "bluetooth"
+mac = "88:C9:E8:CE:69:9F"
+[[block.click]]
+button = "left"
+cmd = "bluetoothctl connect 88:C9:E8:CE:69:9F"
+[[block.click]]
+button = "right"
+cmd = "bluetoothctl disconnect 88:C9:E8:CE:69:9F"
+
+[[block]]
 block = "sound"
 headphones_indicator = true
 [[block.click]]
 button = "left"
-cmd = "alacritty --class floating-foot -e zsh -c pulsemixer"
+cmd = "foot --app-id floating-foot --window-size-chars=150x50 -- zsh -c pulsemixer"
 
 [[block]]
 block = "keyboard_layout"
@@ -76,7 +93,3 @@ block = "battery"
 driver = "upower"
 format = " $icon $percentage $time "
 if_command = "test -e /sys/class/power_supply/BAT0"
-
-[[block]]
-block = "time"
-format = " $icon $timestamp.datetime(f:'%a %F %R', l:nl_NL) "
