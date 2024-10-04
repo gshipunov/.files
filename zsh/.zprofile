@@ -6,6 +6,11 @@ export PATH=$HOME/.local/bin:$PATH
 export EDITOR="vi"
 export VISUAL="nvim"
 
+alias vvi=vi
+alias vvim=vim
+alias vi=nvim
+alias vim=nvim
+
 # platform-specific config
 unamestr=$(uname 2> /dev/null)
 case "$unamestr" in

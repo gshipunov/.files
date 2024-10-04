@@ -27,14 +27,19 @@ Plug 'jeffkreeftmeijer/vim-dim'
 " complete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+
 call plug#end()
 
 " filetype magic
 autocmd BufRead,BufNewFile *.nasm set filetype=nasm
 
+set notermguicolors
 colorscheme dim
+set background=dark
 " bug in neovim 0.8.0
-hi NormalFloat ctermfg=LightGrey
+"hi NormalFloat ctermfg=LightGrey
 
 " langmap russian
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz

@@ -75,4 +75,8 @@ if type "direnv" > /dev/null; then
     eval "$(direnv hook zsh)"
 fi
 
-export PS1="%n@%m:%F{green}%~%F{reset}%# "
+if [[ -v SSH_CLIENT ]] || [[ -v SSH_TTY ]]; then;
+    export PS1="%B>>> %F{cyan}%n%F{magenta}@%m%F{reset}:%F{green}%~%F{reset}%#%b "
+else
+    export PS1="%B>>> %F{cyan}%n@%m%F{reset}:%F{green}%~%F{reset}%#%b "
+fi
