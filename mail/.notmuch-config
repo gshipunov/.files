@@ -1,0 +1,15 @@
+[database]
+path=/home/grue/mail
+[user]
+name=Grigory Shipunov
+primary_email=mail@oxapentane.com
+other_email=grigory@shipunov.xyz;*@oxapentane.com;dump@dvb.solutions
+[new]
+tags=unread;inbox;
+ignore=.mbsyncstate;.uidvalidity
+[search]
+exclude_tags=deleted;spam;
+[maildir]
+synchronize_flags=true
+[crypto]
+gpg_path=gpg
