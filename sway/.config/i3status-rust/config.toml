@@ -1,0 +1,95 @@
+[theme]
+theme = "foot"
+
+[icons]
+icons = "awesome6"
+
+[[block]]
+block = "time"
+format = " $icon $timestamp.datetime(f:'%a %F %R', l:nl_NL) "
+[block.theme_overrides]
+idle_bg = { link = "idle_fg" }
+idle_fg = { link = "idle_bg" }
+
+[[block]]
+block = "maildir"
+interval = 60
+inboxes = ["/home/grue/mail/dump@dvb.solutions/INBOX", "/home/grue/mail/grigory@tlm.solutions/INBOX" ]
+threshold_critical = 1
+display_type = "new"
+[[block.click]]
+button = "left"
+cmd = "foot --app-id floating-foot --window-size-chars=150x50 -- zsh -c neomutt"
+
+[[block]]
+block = "maildir"
+interval = 60
+inboxes = ["/home/grue/mail/mail@oxapentane.com/INBOX", "/home/grue/mail/mail@oxapentane.com/sinkhole", "/home/grue/mail/grigory@shipunov.xyz/INBOX"]
+threshold_warning = 1
+threshold_critical = 10
+display_type = "new"
+[[block.click]]
+button = "left"
+cmd = "foot --app-id floating-foot --window-size-chars=150x50 -- zsh -c neomutt"
+
+[[block]]
+block = "backlight"
+minimum = 5
+maximum = 100
+cycle = [ 100, 50, 10 ]
+
+[[block]]
+block = "net"
+device = "wlan0"
+format = " $icon {$ssid $signal_strength $frequency|} "
+# format = " $icon {$ssid $signal_strength $ip $ipv6|} "
+
+[[block]]
+block = "net"
+device = "enp1s0f0"
+format = " $icon{ | $ip $ipv6 }"
+
+## TODO patch upstream
+# [[block]]
+# block = "net"
+# device = "wg-mullvad"
+# format = " $device "
+
+[[block]]
+block = "memory"
+format = " $icon $mem_used_percents "
+
+[[block]]
+block = "cpu"
+format = " $icon $frequency $barchart $utilization "
+
+[[block]]
+block = "load"
+format = " $1m.eng(w:4) $5m.eng(w:4) $15m.eng(w:4) "
+
+[[block]]
+block = "bluetooth"
+mac = "88:C9:E8:CE:69:9F"
+[[block.click]]
+button = "left"
+cmd = "bluetoothctl connect 88:C9:E8:CE:69:9F"
+[[block.click]]
+button = "right"
+cmd = "bluetoothctl disconnect 88:C9:E8:CE:69:9F"
+
+[[block]]
+block = "sound"
+headphones_indicator = true
+[[block.click]]
+button = "left"
+cmd = "foot --app-id floating-foot --window-size-chars=150x50 -- zsh -c pulsemixer"
+
+[[block]]
+block = "keyboard_layout"
+driver = "sway"
+
+[[block]]
+block = "battery"
+driver = "upower"
+format = " $icon $percentage $time "
+if_command = "test -e /sys/class/power_supply/BAT0"

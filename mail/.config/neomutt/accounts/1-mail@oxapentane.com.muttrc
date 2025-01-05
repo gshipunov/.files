@@ -22,7 +22,7 @@ unset signature
 unmacro index o
 macro index o "<shell-escape>mbsync mail@oxapentane.com<enter>" "run mbsync to sync mail@oxapentane.com"
 
-mailboxes "=Archive" "=Drafts" "=flipper" "=funk24" "=hackint" "=hkinv" "=INBOX" "=juliaacademy" "=Junk" "=kickstarter" "=leanpub" "=meduza" "=mercht" "=misc" "=monster" "=nplus1" "=nytimes" "=online-go" "=openweathermap" "=ovdinfo" "=quantumcountry" "=rocky" "=rockylinux" "=Sent" "=sinkhole" "=teepublic" "=Templates" "=threadless" "=Trash" "=vodafone" "=vultr" "=xakep" "=zotero-sync"
+mailboxes "=Archive" "=Drafts" "=flipper" "=funk24" "=hackint" "=hkinv" "=INBOX" "=juliaacademy" "=Junk" "=kickstarter" "=leanpub" "=meduza" "=mercht" "=monster" "=nplus1" "=nytimes" "=online-go" "=openweathermap" "=ovdinfo" "=quantumcountry" "=rocky" "=rockylinux" "=Sent" "=sinkhole" "=teepublic" "=Templates" "=threadless" "=Trash" "=vodafone" "=vultr" "=xakep" "=zotero-sync"
 macro index,pager gj "<change-folder>=Junk<enter>" "go to junk"
 macro index,pager Mj ";<save-message>=Junk<enter>" "move mail to junk"
 macro index,pager Cj ";<copy-message>=Junk<enter>" "copy mail to junk"

@@ -1,0 +1,8 @@
+configuration {
+    modi: "drun,ssh,run,combi";
+    font: "Hack 11";
+    combi-modi: "drun,ssh";
+    terminal: "foot";
+}
+//@theme "DarkBlue"
+@theme "gruvbox-dark-hard"
