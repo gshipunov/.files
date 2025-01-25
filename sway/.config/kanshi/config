@@ -1,14 +1,14 @@
 # Default
 profile {
-    output eDP-1 enable
+    output eDP-1 enable adaptive_sync on
 }
 # Home
 profile {
-    output eDP-1 enable enable position -1920,960
-    output "LG Electronics LG HDR 4K 0x00000CA7" enable mode 3840x2160 position 0,0
+    output eDP-1 enable position 3840,0 adaptive_sync on
+    output DP-8 enable mode 3840x2160 position 0,0 adaptive_sync on
 }
 # Work
 profile {
-    output eDP-1 enable position 0,1200
-    output "Samsung Electric Company LF24T450G HNMTA01726" enable mode 1920x1200 position 0,0
+    output eDP-1 enable position 0,1200 adaptive_sync on
+    output "Samsung Electric Company LF24T450G HNMTA01726" enable mode 1920x1200@60Hz position 0,0 adaptive_sync on
 }

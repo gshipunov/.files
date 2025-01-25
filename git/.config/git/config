@@ -4,7 +4,7 @@
     signingkey = DD0998E6CDF294537FC604F991FA5E5BF9AA901C
 [color]
     ui = auto
-[merege]
+[merge]
     conflictstyle = diff3
 [commit]
     gpgsign = false

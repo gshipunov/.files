@@ -2,7 +2,7 @@
 theme = "foot"
 
 [icons]
-icons = "awesome6"
+icons = "material-nf"
 
 [[block]]
 block = "time"
@@ -14,23 +14,23 @@ idle_fg = { link = "idle_bg" }
 [[block]]
 block = "maildir"
 interval = 60
-inboxes = ["/home/grue/mail/dump@dvb.solutions/INBOX", "/home/grue/mail/grigory@tlm.solutions/INBOX" ]
+inboxes = ["/home/0xa/mail/dump@dvb.solutions/INBOX", "/home/0xa/mail/grigory@tlm.solutions/INBOX" ]
 threshold_critical = 1
 display_type = "new"
 [[block.click]]
 button = "left"
-cmd = "foot --app-id floating-foot --window-size-chars=150x50 -- zsh -c neomutt"
+cmd = "alacritty --class floating-foot -e zsh -c neomutt"
 
 [[block]]
 block = "maildir"
 interval = 60
-inboxes = ["/home/grue/mail/mail@oxapentane.com/INBOX", "/home/grue/mail/mail@oxapentane.com/sinkhole", "/home/grue/mail/grigory@shipunov.xyz/INBOX"]
+inboxes = ["/home/0xa/mail/mail@oxapentane.com/INBOX", "/home/0xa/mail/mail@oxapentane.com/sinkhole", "/home/0xa/mail/grigory@shipunov.xyz/INBOX"]
 threshold_warning = 1
 threshold_critical = 10
 display_type = "new"
 [[block.click]]
 button = "left"
-cmd = "foot --app-id floating-foot --window-size-chars=150x50 -- zsh -c neomutt"
+cmd = "alacritty --class floating-foot -e zsh -c neomutt"
 
 [[block]]
 block = "backlight"
@@ -49,19 +49,15 @@ block = "net"
 device = "enp1s0f0"
 format = " $icon{ | $ip $ipv6 }"
 
-## TODO patch upstream
-# [[block]]
-# block = "net"
-# device = "wg-mullvad"
-# format = " $device "
+# TODO patch upstream
+#[[block]]
+#block = "net"
+#device = "wg-mullvad"
+#format = " $device up $ip "
 
 [[block]]
 block = "memory"
 format = " $icon $mem_used_percents "
-
-[[block]]
-block = "cpu"
-format = " $icon $frequency $barchart $utilization "
 
 [[block]]
 block = "load"
