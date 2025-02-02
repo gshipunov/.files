@@ -26,7 +26,7 @@
 [pull]
     ff = only
 [init]
-    defaultBranch = master
+    defaultBranch = main
 [safe]
     directory = /etc/nixos
 [sendemail]

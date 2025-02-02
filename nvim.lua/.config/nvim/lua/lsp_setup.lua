@@ -71,20 +71,3 @@ for _, serv in ipairs(servers) do
         capabilities = capabilities,
     }
 end
-
--- Rust: using rust tools package
-local rt = require("rust-tools")
-rt.setup({
-    server = {
-        on_attach = on_attach,
-        flags = lsp_flags,
-        capabilities = capabilities,
-        settings = {
-            ["rust-analyzer"] = {
-                cargo = {
-                    allFeatures = true,
-                },
-            },
-        },
-    },
-})

@@ -62,16 +62,6 @@ return require('packer').startup(function(use)
         end,
     }
 
-    -- pretty bits
-    -- use {
-    --     '/home/grue/projects/zen-footburn.nvim',
-    --     config = function()
-    --         vim.cmd([[
-    --         set termguicolors
-    --         colorscheme zenburn
-    --         ]])
-    --     end,
-    -- }
     use {
         'sainnhe/everforest',
         config = function()
@@ -82,14 +72,7 @@ return require('packer').startup(function(use)
             ]])
         end,
     }
-    -- use {
-    --     'jeffkreeftmeijer/vim-dim',
-    --     config = function()
-    --         vim.cmd([[
-    --         colorscheme dim
-    --         ]])
-    --     end,
-    -- }
+
     use {
         'johnfrankmorgan/whitespace.nvim',
         config = function ()
@@ -106,17 +89,7 @@ return require('packer').startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
         -- after = { 'zen-footburn.nvim' },
         config = function()
-            -- this now handled by the lualine
-            vim.cmd([[set noshowmode]])
-
-            return require('lualine').setup {
-                options = {
-                    icons_enabled = true,
-                    theme = 'auto',
-                    -- section_separators = '',
-                    -- component_seaparators = '',
-                }
-            }
+            require('lualine_setup')
         end,
     }
 
@@ -132,24 +105,30 @@ return require('packer').startup(function(use)
 
     -- Nifty stuff
     use 'tpope/vim-surround'
-    -- use 'airblade/vim-rooter'
+    -- use {
+    --     'ibhagwan/fzf-lua',
+    --     config = setup_fzf(),
+    -- }
     use {
-        'nvim-telescope/telescope.nvim',
-        branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' } },
+        'nvim-telescope/telescope.nvim', tag = '0.1.8',
+        requires = { {'nvim-lua/plenary.nvim'} },
         config = function()
-            require('telescope').setup{
-                pickers = {
-                    find_files = {
-                        theme = "dropdown",
-                    }
-                }
-            }
+            local actions = require("telescope.actions")
+            require("telescope").setup({
+                defaults = {
+                    mappings = {
+                        i = {
+                            ["<esc>"] = actions.close,
+                        },
+                    },
+                },
+            })
             local builtin = require('telescope.builtin')
-            vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-            vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-            vim.keymap.set('n', '<leader>b', builtin.buffers, {})
-            vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+            vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+            vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+            vim.keymap.set('n', '<leader>fG', builtin.git_files, { desc = 'Telescope find git ls-files' })
+            vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+            vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
         end,
     }
 
@@ -194,10 +173,10 @@ return require('packer').startup(function(use)
     use {
         'neovim/nvim-lspconfig',
         after = { 'nvim-cmp' },
-        requires = { 'simrat39/rust-tools.nvim' },
         config = function()
-            require'lsp_setup'
+            require'lsp_setup';
         end,
+        requires = { 'mrcjkb/rustaceanvim' },
     }
 
     use {
